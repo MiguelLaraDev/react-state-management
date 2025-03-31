@@ -26,3 +26,5 @@ Cart:
     Only show the icon of the cart at page top-right.
     When click on the icon shows a dropdown with a shor detail.
     The cart should be handled by the client state.
+
+All pages should be lazy loaded.
