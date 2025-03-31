@@ -1,9 +1,10 @@
+import Layout from "../shared/Layout";
+
 const InstrumentsList = () => {
   return (
-    <div>
-      <h1>Instruments List</h1>
-      {/* Add your instruments list content here */}
-    </div>
+    <Layout>
+      <div> Add your instrument list content here</div>
+    </Layout>
   );
 };
 

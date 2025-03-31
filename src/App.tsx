@@ -1,9 +1,7 @@
+import InstrumentsList from "./pages/InstrumentsList";
+
 const App = () => {
-  return (
-    <div>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-    </div>
-  );
+  return <InstrumentsList />;
 };
 
 export default App;
