@@ -6,6 +6,11 @@ import App from "./App.tsx";
 
 const queryClient = new QueryClient();
 
+if (import.meta.env.DEV) {
+  const { initMocks } = await import("./mocks");
+  await initMocks();
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const fetchItems = async ({ pageParam = 0 }) => {
-  const response = await fetch(`https://api.example.com/items?page=${pageParam}`);
+  const response = await fetch(`/api/user?page=${pageParam}`);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
