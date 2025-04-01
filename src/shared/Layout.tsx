@@ -7,14 +7,14 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className='w-full min-h-dvh flex flex-col gap-6'>
+    <div className='w-full min-h-dvh flex flex-col'>
       <Header />
 
-      <main className='w-full h-full flex flex-col gap-6 p-6'>
+      <main className='w-full h-full flex flex-col gap-8 p-8 md:w-[1440px] md:mx-auto'>
         <h1 className='font-bold text-5xl'>Title</h1>
 
         <div className='w-full h-full flex flex-row gap-4'>
-          <div className='w-96 h-full'>
+          <div className='w-80 h-full'>
             <Filter />
           </div>
 
