@@ -1,11 +1,13 @@
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, type InfiniteData } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-const fetchItems = async ({ pageParam = 0 }) => {
-  const response = await fetch(`/api/user?page=${pageParam}`);
+import type { InstrumentsApiResponse } from "../interfaces/types";
+
+const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsApiResponse> => {
+  const response = await fetch(`/api/instruments?page=${context.pageParam ?? 0}`);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -14,13 +16,25 @@ const fetchItems = async ({ pageParam = 0 }) => {
   return response.json();
 };
 
-const InstrumentsList = () => {
-  const { data, error, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ["items"],
+const useInstrumentsInfiniteQuery = () => {
+  return useInfiniteQuery<
+    InstrumentsApiResponse,
+    Error,
+    InfiniteData<InstrumentsApiResponse>,
+    ["instruments"],
+    number
+  >({
+    queryKey: ["instruments"],
     queryFn: fetchItems,
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
+    getNextPageParam: (lastPage) => {
+      return lastPage.guitars.nextPage;
+    },
   });
+};
+
+const InstrumentsList = () => {
+  const { data, error, status, isFetchingNextPage, fetchNextPage } = useInstrumentsInfiniteQuery();
 
   const { ref, inView } = useInView();
 
