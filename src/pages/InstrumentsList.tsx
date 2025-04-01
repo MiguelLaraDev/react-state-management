@@ -44,6 +44,8 @@ const InstrumentsList = () => {
     }
   }, [fetchNextPage, inView]);
 
+  console.log(data, error, status, isFetchingNextPage);
+
   if (status === "pending") {
     return <div>Loading...</div>;
   }

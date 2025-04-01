@@ -1,38 +1,29 @@
-import { http, HttpResponse } from 'msw';
-
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-}
-
-interface LoginResponse {
-  token: string;
-}
+import { http, HttpResponse } from "msw";
+import type { InstrumentsPage } from "../interfaces/types";
 
 export const handlers = [
-  // Mock a GET request
-  http.get('/api/user', () => {
-    const mockUser: User = {
-      id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
+  http.get("/api/instruments", () => {
+    const result: InstrumentsPage = {
+      nextPage: null,
+      currentPage: 0,
+      totalPages: 1,
+      instruments: [
+        {
+          id: 1,
+          slug: "fender-stratocaster",
+          name: "Fender Stratocaster",
+          price: 899.99,
+          description:
+            "Iconic electric guitar with versatile tone options and comfortable playability.",
+          availability: "available",
+          score: 4.8,
+          thumb_small: "https://example.com/thumbs/guitars/strat_small.jpg",
+          thumb_medium: "https://example.com/thumbs/guitars/strat_medium.jpg",
+          image: "https://example.com/images/guitars/strat_full.jpg",
+        },
+      ],
     };
-    
-    return HttpResponse.json(mockUser, { status: 200 });
-  }),
 
-  // Mock a POST request
-  http.post('/api/login', async ({ request }) => {
-
-    console.log(request)
-    // You can access the request body if needed
-    // const body = await request.json();
-    
-    const response: LoginResponse = {
-      token: 'mock-token',
-    };
-    
-    return HttpResponse.json(response, { status: 200 });
+    return HttpResponse.json(result, { status: 200 });
   }),
 ];
