@@ -1,7 +1,12 @@
 import InstrumentsList from "./pages/InstrumentsList";
+import Layout from "./shared/Layout";
 
 const App = () => {
-  return <InstrumentsList />;
+  return (
+    <Layout>
+      <InstrumentsList />
+    </Layout>
+  );
 };
 
 export default App;

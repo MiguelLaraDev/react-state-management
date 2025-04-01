@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Filter />
           </div>
 
-          <div className='flex flex-grow flex-1 border border-green-500'>{children}</div>
+          <div className='flex flex-grow flex-1'>{children}</div>
         </div>
       </main>
     </div>
