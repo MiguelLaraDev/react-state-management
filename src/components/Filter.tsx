@@ -8,18 +8,22 @@ const filters = [
       {
         id: 2,
         name: "Guitars",
+        amount: 99,
       },
       {
         id: 3,
         name: "Drums",
+        amount: 99,
       },
       {
         id: 4,
         name: "Keyboards",
+        amount: 99,
       },
       {
         id: 5,
         name: "Microphones",
+        amount: 99,
       },
     ],
   },
@@ -30,22 +34,27 @@ const filters = [
       {
         id: 7,
         name: "$0 - $50",
+        amount: 99,
       },
       {
         id: 8,
         name: "$50 - $100",
+        amount: 99,
       },
       {
         id: 9,
         name: "$100 - $200",
+        amount: 99,
       },
       {
         id: 10,
         name: "$200 - $500",
+        amount: 99,
       },
       {
         id: 11,
         name: "$500+",
+        amount: 99,
       },
     ],
   },
@@ -56,14 +65,17 @@ const filters = [
       {
         id: 8,
         name: "In stock",
+        amount: 99,
       },
       {
         id: 9,
         name: "Out of stock",
+        amount: 99,
       },
       {
         id: 10,
         name: "Few-left",
+        amount: 99,
       },
     ],
   },
@@ -74,22 +86,27 @@ const filters = [
       {
         id: 9,
         name: "1 star",
+        amount: 99,
       },
       {
         id: 10,
         name: "2 stars",
+        amount: 99,
       },
       {
         id: 11,
         name: "3 stars",
+        amount: 99,
       },
       {
         id: 12,
         name: "4 stars",
+        amount: 99,
       },
       {
         id: 13,
         name: "5 stars",
+        amount: 99,
       },
     ],
   },
@@ -129,7 +146,9 @@ const Filter = () => {
                   >
                     <polyline points='20 6 9 17 4 12'></polyline>
                   </svg>
-                  <label className='font-thin'>{item.name}</label>
+                  <label className='font-thin'>
+                    {item.name} ({item.amount})
+                  </label>
                 </li>
               ))}
             </ul>

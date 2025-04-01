@@ -7,9 +7,11 @@ const InstrumentsList = () => {
       {Array.from({ length: 100 }, (_, i) => (
         <div
           key={i}
-          className='w-full h-48 flex flex-row gap-0 p-0 bg-neutral-100 rounded-xl overflow-hidden'
+          className='w-full h-48 flex flex-row gap-0 p-0 rounded-xl border border-neutral-200 overflow-hidden'
         >
-          <div className='w-1/4 bg-neutral-150'>image</div>
+          <div className='w-1/4 h-full bg-white py-6'>
+            <img src='/images/img-example.webp' className='w-auto h-full mx-auto' />
+          </div>
 
           <div className='flex flex-col gap-1 flex-grow px-8 py-4'>
             <h2 className='font-semibold text-2xl'>Instrument name</h2>
