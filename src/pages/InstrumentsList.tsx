@@ -87,7 +87,7 @@ const InstrumentsList = () => {
             </div>
 
             <div className='w-1/4 flex flex-col items-end justify-between p-8'>
-              <p className='font-semibold text-3xl tracking-tighter whitespace-nowrap'>{price} €</p>
+              <p className='font-bold text-3xl tracking-tighter whitespace-nowrap'>{price} €</p>
 
               <button>
                 <FontAwesomeIcon icon={faCartPlus} className='text-2xl text-neutral-700' />
