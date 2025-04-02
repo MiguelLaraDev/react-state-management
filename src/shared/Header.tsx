@@ -1,4 +1,4 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
@@ -12,7 +12,9 @@ const Header = () => {
         "flex flex-row items-center justify-between"
       )}
     >
-      <div>left</div>
+      <button>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
 
       <div>
         <img src={logo} alt='Logo' className='h-8' />

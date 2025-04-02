@@ -6,6 +6,8 @@ import App from "./App.tsx";
 
 const queryClient = new QueryClient();
 
+// queryClient.clear();
+
 if (import.meta.env.DEV) {
   const { initMocks } = await import("./mocks");
   await initMocks();
