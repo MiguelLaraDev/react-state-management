@@ -4,7 +4,7 @@ export interface Instrument {
   name: string;
   price: number;
   description: string;
-  availability: 'available' | 'few left' | 'sold-out';
+  availability: "available" | "few left" | "sold-out";
   score: number;
   thumb_small: string;
   thumb_medium: string;
@@ -18,16 +18,9 @@ export interface InstrumentData {
   microphones: Instrument[];
 }
 
-export interface InstrumentsPage {
+export interface InstrumentsApiResponse {
   instruments: Instrument[];
   nextPage: number | null; // null when no more pages
   currentPage: number;
   totalPages: number;
-}
-
-export interface InstrumentsApiResponse {
-  guitars: InstrumentsPage;
-  drums: InstrumentsPage;
-  keyboards: InstrumentsPage;
-  microphones: InstrumentsPage;
 }

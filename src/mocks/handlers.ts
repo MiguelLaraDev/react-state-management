@@ -1,9 +1,9 @@
 import { http, HttpResponse } from "msw";
-import type { InstrumentsPage } from "../interfaces/types";
+import type { InstrumentsApiResponse } from "../interfaces/types";
 
 export const handlers = [
   http.get("/api/instruments", () => {
-    const result: InstrumentsPage = {
+    const result: InstrumentsApiResponse = {
       nextPage: null,
       currentPage: 0,
       totalPages: 1,
