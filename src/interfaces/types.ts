@@ -20,6 +20,7 @@ export interface Instrument {
   availability: "available" | "few left" | "sold-out";
   category: "guitars" | "drums" | "synths" | "microphones";
   description: string;
+  long_description?: string;
   id: number;
   image: string;
   name: string;

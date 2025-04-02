@@ -4,9 +4,25 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
+import classNames from "classnames";
 import type { InstrumentsApiResponse } from "../interfaces/types";
 import Layout from "../shared/Layout";
 import Score from "../shared/Score";
+
+const availabilityConfig = {
+  available: {
+    label: "Available",
+    color: "text-green-600",
+  },
+  "few left": {
+    label: "Few left! Hurry up!",
+    color: "text-orange-600",
+  },
+  "sold-out": {
+    label: "Sold out, soon to be back",
+    color: "text-red-600",
+  },
+};
 
 const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsApiResponse> => {
   const response = await fetch(`/api/instruments?page=${context.pageParam ?? 0}`);
@@ -64,7 +80,10 @@ const InstrumentsList = () => {
               <ul>
                 <li className='text-neutral-600'>{description}</li>
               </ul>
-              <p>{availability}</p>
+
+              <p className={classNames("mt-auto", availabilityConfig[availability].color)}>
+                {availabilityConfig[availability].label}
+              </p>
             </div>
 
             <div className='w-1/4 flex flex-col items-end justify-between p-8'>
