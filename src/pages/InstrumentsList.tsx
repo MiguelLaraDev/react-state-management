@@ -40,8 +40,6 @@ const InstrumentsList = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
-
   const instruments = data.pages.flatMap((page) => page.instruments);
 
   return (

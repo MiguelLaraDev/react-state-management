@@ -1,6 +1,10 @@
 import { http, HttpResponse } from "msw";
 import type { InstrumentsApiResponse } from "../interfaces/types";
 
+import db from "./database.json";
+
+console.log(db);
+
 export const handlers = [
   http.get("/api/instruments", () => {
     const result: InstrumentsApiResponse = {
@@ -12,6 +16,7 @@ export const handlers = [
           id: 1,
           slug: "fender-stratocaster",
           name: "Fender Stratocaster",
+          category: "guitars",
           price: 899.99,
           description:
             "Iconic electric guitar with versatile tone options and comfortable playability.",

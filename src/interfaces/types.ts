@@ -1,21 +1,15 @@
 export interface Instrument {
+  availability: "available" | "few left" | "sold-out";
+  category: "guitars" | "drums" | "synths" | "microphones";
+  description: string;
   id: number;
-  slug: string;
+  image: string;
   name: string;
   price: number;
-  description: string;
-  availability: "available" | "few left" | "sold-out";
   score: number;
-  thumb_small: string;
+  slug: string;
   thumb_medium: string;
-  image: string;
-}
-
-export interface InstrumentData {
-  guitars: Instrument[];
-  drums: Instrument[];
-  keyboards: Instrument[];
-  microphones: Instrument[];
+  thumb_small: string;
 }
 
 export interface InstrumentsApiResponse {
