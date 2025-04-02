@@ -8,8 +8,6 @@ export const handlers = [
   http.get("/api/instruments", () => {
     const result = getFilteredInstruments(db as Instrument[]);
 
-    console.log(result);
-
     return HttpResponse.json(result, { status: 200 });
   }),
 ];

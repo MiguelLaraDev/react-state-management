@@ -17,14 +17,14 @@ const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsA
 };
 
 const InstrumentsList = () => {
+  const { ref, inView } = useInView();
+
   const { data, error, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["instruments"],
     queryFn: fetchItems,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
-
-  const { ref, inView } = useInView();
 
   useEffect(() => {
     if (inView) {
