@@ -1,3 +1,22 @@
+// types.ts
+export type SortDirection = "asc" | "desc";
+export type SortableField = "name" | "price"; // Add more fields as needed
+
+export interface InstrumentFilterOptions {
+  categories?: Instrument["category"][];
+  priceRanges?: { min: number; max: number }[];
+  scoreRange?: { min: number; max: number };
+  availability?: Instrument["availability"][];
+  sortBy?: {
+    field: SortableField;
+    direction: SortDirection;
+  };
+  pagination?: {
+    page: number;
+    pageSize: number;
+  };
+}
+
 export interface Instrument {
   availability: "available" | "few left" | "sold-out";
   category: "guitars" | "drums" | "synths" | "microphones";
