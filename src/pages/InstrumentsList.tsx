@@ -18,7 +18,7 @@ const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsA
 
 const InstrumentsList = () => {
   const { data, error, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: ["items"],
+    queryKey: ["instruments"],
     queryFn: fetchItems,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextPage,
@@ -40,7 +40,7 @@ const InstrumentsList = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const instruments = data.pages.flatMap((page) => page.instruments);
+  const instruments = data.pages[0].data;
 
   return (
     <div className='w-full flex flex-col gap-4'>

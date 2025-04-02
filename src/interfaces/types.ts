@@ -1,4 +1,3 @@
-// types.ts
 export type SortDirection = "asc" | "desc";
 export type SortableField = "name" | "price"; // Add more fields as needed
 
@@ -32,8 +31,9 @@ export interface Instrument {
 }
 
 export interface InstrumentsApiResponse {
-  instruments: Instrument[];
-  nextPage: number | null; // null when no more pages
   currentPage: number;
+  data: Instrument[];
+  nextPage: number | null; // null when no more pages
+  totalItems: number;
   totalPages: number;
 }
