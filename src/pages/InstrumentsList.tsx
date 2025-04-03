@@ -1,5 +1,4 @@
-import { memo, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { memo } from "react";
 
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
@@ -7,6 +6,8 @@ import type { Instrument } from "../interfaces/types";
 import Layout from "../shared/Layout";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
+  // console.log("List render:", new Date().toISOString());
+
   return (
     <>
       {instruments.map((instrument) => (
@@ -17,15 +18,7 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
 });
 
 const InstrumentsList = () => {
-  const { ref, inView } = useInView();
-
-  const { instruments, error, isFetchingNextPage, status, fetchNextPage } = useInstrumentFetch();
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [fetchNextPage, inView]);
+  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
 
   if (status === "pending") {
     return <div>Loading...</div>;
@@ -39,7 +32,7 @@ const InstrumentsList = () => {
     return <div>No data available</div>;
   }
 
-  console.log("render:", new Date().toISOString());
+  // console.log("render:", new Date().toISOString());
 
   return (
     <Layout title='Choose your instruments'>

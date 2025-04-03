@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import { useInView } from "react-intersection-observer";
 import type { InstrumentsApiResponse } from "../interfaces/types";
 
 const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsApiResponse> => {
@@ -13,6 +14,8 @@ const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsA
 };
 
 const useInstrumentFetch = () => {
+  const { ref, inView } = useInView();
+
   const { data, error, status, isFetchingNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: ["instruments"],
     initialPageParam: 1,
@@ -20,16 +23,22 @@ const useInstrumentFetch = () => {
     queryFn: fetchItems,
   });
 
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [fetchNextPage, inView]);
+
   const instruments = useMemo(() => {
     return data?.pages.flatMap((page) => page.data) || null;
   }, [data]);
 
   return {
-    instruments,
     error,
+    instruments,
     isFetchingNextPage,
     status,
-    fetchNextPage,
+    ref,
   };
 };
 
