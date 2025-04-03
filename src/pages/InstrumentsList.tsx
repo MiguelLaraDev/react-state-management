@@ -1,48 +1,17 @@
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import classNames from "classnames";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-import classNames from "classnames";
-import type { InstrumentsApiResponse } from "../interfaces/types";
+import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import Layout from "../shared/Layout";
 import Score from "../shared/Score";
-
-const availabilityConfig = {
-  available: {
-    label: "Available",
-    color: "text-green-600",
-  },
-  "few left": {
-    label: "Few left! Hurry up!",
-    color: "text-orange-600",
-  },
-  "sold-out": {
-    label: "Sold out, soon to be back",
-    color: "text-red-600",
-  },
-};
-
-const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsApiResponse> => {
-  const response = await fetch(`/api/instruments?page=${context.pageParam ?? 0}`);
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-
-  return response.json();
-};
+import { availabilityConfig } from "../utils/configs";
 
 const InstrumentsList = () => {
   const { ref, inView } = useInView();
-
-  const { data, error, status, isFetchingNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: ["instruments"],
-    queryFn: fetchItems,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  const { data, error, isFetchingNextPage, status, fetchNextPage } = useInstrumentFetch();
 
   useEffect(() => {
     if (inView) {
@@ -55,7 +24,11 @@ const InstrumentsList = () => {
   }
 
   if (status === "error") {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: {error?.message}</div>;
+  }
+
+  if (!data?.pages) {
+    return <div>No data available</div>;
   }
 
   const instruments = data.pages.flatMap((page) => page.data);

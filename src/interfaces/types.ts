@@ -17,7 +17,7 @@ export interface InstrumentFilterOptions {
 }
 
 export interface Instrument {
-  availability: "available" | "few left" | "sold-out";
+  availability: "available" | "few-left" | "sold-out";
   category: "guitars" | "drums" | "synths" | "microphones";
   description: string;
   long_description?: string;

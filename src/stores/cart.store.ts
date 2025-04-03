@@ -8,7 +8,7 @@ type CartStore = {
 };
 
 export const useCartStore = create<CartStore>((set) => ({
-  cart: [],
+  cart: ["one", "two", "three"],
   add: () => {
     const newItem = "new item";
 

@@ -19,6 +19,7 @@ const useInstrumentFetch = () => {
     queryFn: fetchItems,
   });
 
+  // TODO: Type this return values:
   return {
     data,
     error,
