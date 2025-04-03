@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useInView } from "react-intersection-observer";
 
 const filters = [
   {
@@ -113,8 +114,18 @@ const filters = [
 ];
 
 const Filter = () => {
+  const { ref, inView, entry } = useInView({
+    threshold: 0.4,
+    rootMargin: "-50px 0px 0px 0px",
+  });
+
+  console.log(entry);
+
   return (
-    <div className='w-full h-full flex flex-col gap-8'>
+    <div
+      ref={ref}
+      className={classNames("w-full h-full flex flex-col gap-8", { "!fixed top-16": inView })}
+    >
       {filters.map(({ name, items }) => {
         return (
           <div key={name} className='flex flex-col gap-2'>

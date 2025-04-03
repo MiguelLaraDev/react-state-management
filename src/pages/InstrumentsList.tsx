@@ -35,8 +35,9 @@ const InstrumentsList = () => {
   // console.log("render:", new Date().toISOString());
 
   return (
+    /* TODO: Add the number of instruments near the title: */
     <Layout title='Choose your instruments'>
-      <div className='w-full flex flex-col gap-4'>
+      <div className='w-full h-fit flex flex-col gap-4'>
         <List instruments={instruments} />
         <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
       </div>
