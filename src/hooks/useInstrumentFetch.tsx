@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import type { InstrumentsApiResponse } from "../interfaces/types";
 
 const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentsApiResponse> => {
@@ -19,9 +20,12 @@ const useInstrumentFetch = () => {
     queryFn: fetchItems,
   });
 
-  // TODO: Type this return values:
+  const instruments = useMemo(() => {
+    return data?.pages.flatMap((page) => page.data) || null;
+  }, [data]);
+
   return {
-    instruments: data?.pages.flatMap((page) => page.data) || null,
+    instruments,
     error,
     isFetchingNextPage,
     status,

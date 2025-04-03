@@ -28,7 +28,7 @@ const InstrumentsList = () => {
     return <div>No data available</div>;
   }
 
-  console.log("render:", new Date().toISOString());
+  // console.log("render:", new Date().toISOString());
 
   return (
     <Layout title='Choose your instruments'>
