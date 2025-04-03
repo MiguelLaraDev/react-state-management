@@ -1,4 +1,4 @@
-export const availabilityConfig = {
+export const availabilityConfig: { [key: string]: { label: string; color: string } } = {
   available: {
     label: "Available",
     color: "text-green-600",

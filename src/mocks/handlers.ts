@@ -11,7 +11,7 @@ export const handlers = [
 
     const options: InstrumentFilterOptions = {
       pagination: {
-        page: Number(page) || 0,
+        page: Number(page) || 1,
         pageSize: 10,
       },
     };
