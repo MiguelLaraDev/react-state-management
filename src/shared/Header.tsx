@@ -1,8 +1,9 @@
-import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
 import logo from "@assets/logo.svg";
+import CartWidget from "../components/CartWidget";
 
 const Header = () => {
   return (
@@ -20,11 +21,7 @@ const Header = () => {
         <img src={logo} alt='Logo' className='h-8' />
       </div>
 
-      <div>
-        <button>
-          <FontAwesomeIcon icon={faCartShopping} />
-        </button>
-      </div>
+      <CartWidget />
     </header>
   );
 };
