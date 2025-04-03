@@ -1,3 +1,7 @@
 TODO:
 
-Crear una api liviana para la lista y otra para el detalle del producto.
+Recibir los filters disponibles por api.
+
+Calcular los verdaderos números disponibles en el server.
+
+Inyectar los filtros usando React Query.
