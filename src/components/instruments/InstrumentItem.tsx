@@ -2,8 +2,9 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { memo } from "react";
-import Score from "../../shared/Score";
+
 import { availabilityConfig } from "../../utils/configs";
+import Score from "../Score";
 
 interface InstrumentItemProps {
   name: string;

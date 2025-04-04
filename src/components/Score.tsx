@@ -10,12 +10,11 @@ interface ScoreProps {
 const Score = ({ score }: ScoreProps) => {
   return (
     <div className='flex gap-1'>
-      {[1, 2, 3, 4, 5].map((i) => {
+      {Array.from({ length: 5 }).map((_, i) => {
         const icon = i <= score ? faStar : faStarOutline;
 
         return <FontAwesomeIcon key={`score-${i}`} icon={icon} />;
       })}
-      {/* TODO: Add amount of users which voted this score */}
     </div>
   );
 };

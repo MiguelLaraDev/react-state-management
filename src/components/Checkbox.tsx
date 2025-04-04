@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 interface CheckboxProps {
-  label: string;
+  label: string | null;
 }
 
 const Checkbox = ({ label }: CheckboxProps) => {
@@ -12,7 +12,7 @@ const Checkbox = ({ label }: CheckboxProps) => {
         className={classNames(
           "relative peer shrink-0",
           "appearance-none w-6 h-6 border border-neutral-400 rounded-sm bg-white",
-          "mt-1 cursor-pointer",
+          "mt-[2px] cursor-pointer",
           "checked:bg-neutral-100",
           "focus:outline-none focus:ring-offset-0 focus:ring-2 focus:ring-neutral-100",
           "disabled:border-steel-400 disabled:bg-steel-400 disabled:cursor-not-allowed"
@@ -30,7 +30,7 @@ const Checkbox = ({ label }: CheckboxProps) => {
       >
         <polyline points='20 6 9 17 4 12'></polyline>
       </svg>
-      <label className='font-thin'>{label}</label>
+      {label && <label className='font-thin'>{label}</label>}
     </div>
   );
 };
