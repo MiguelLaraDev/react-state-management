@@ -1,4 +1,3 @@
-import type { FilterOption } from "../../interfaces/filters.types";
 import type { Instrument, InstrumentFilterOptions } from "../../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../../interfaces/shared.types";
 
@@ -77,27 +76,4 @@ export const getFilteredInstruments = (
     totalItems: results.length,
     totalPages,
   };
-};
-
-export const getFiltersOptions = (instruments: Instrument[]): FilterOption[] => {
-  const categories = Array.from(new Set(instruments.map((instrument) => instrument.category)));
-
-  console.log("categories", categories);
-
-  // const priceRanges = [
-  //   { min: 0, max: 50 },
-  //   { min: 51, max: 100 },
-  //   { min: 101, max: 200 },
-  //   { min: 201, max: 500 },
-  //   { min: 501, max: Infinity },
-  // ];
-  // const scoreRange = {
-  //   min: Math.min(...instruments.map((i) => i.score)),
-  //   max: Math.max(...instruments.map((i) => i.score)),
-  // };
-  // const availability = Array.from(
-  //   new Set(instruments.map((instrument) => instrument.availability))
-  // );
-
-  return [];
 };
