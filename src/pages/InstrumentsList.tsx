@@ -1,9 +1,9 @@
 import { memo } from "react";
 
 import InstrumentItem from "../components/instruments/InstrumentItem";
+import Layout from "../components/Layout";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
-import Layout from "../shared/Layout";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
   return (
