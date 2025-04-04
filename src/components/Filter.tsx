@@ -2,6 +2,15 @@ import classNames from "classnames";
 
 import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
+import type { Filter } from "../interfaces/filters.types";
+
+// TODO: Import all locales from an api...
+const titles: Record<Filter, string> = {
+  category: "Categories",
+  price: "Price",
+  score: "Score",
+  availability: "Availability",
+};
 
 const Filter = () => {
   const { filters, status, error } = useFiltersFetch();
@@ -18,14 +27,14 @@ const Filter = () => {
 
   return (
     <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
-      {filters.map(({ title, items }) => {
+      {filters.map(({ id, items }) => {
         return (
-          <div key={title} className='flex flex-col gap-2'>
-            <h3 className='font-semibold text-lg'>{title}</h3>
+          <div key={id} className='flex flex-col gap-2'>
+            <h3 className='font-semibold text-lg'>{titles[id]}</h3>
 
             <ul className='flex flex-col gap-0 ml-2'>
               {items.map((item) => (
-                <li key={item.label} className='flex flex-row gap-2 items-center'>
+                <li key={item.id} className='flex flex-row gap-2 items-center'>
                   <input
                     type='checkbox'
                     className={classNames(
@@ -50,7 +59,7 @@ const Filter = () => {
                     <polyline points='20 6 9 17 4 12'></polyline>
                   </svg>
                   <label className='font-thin'>
-                    {item.label} ({item.count})
+                    {item.id} ({item.count})
                   </label>
                 </li>
               ))}

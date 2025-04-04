@@ -1,8 +1,2 @@
 TODO:
 
-Recibir los filters disponibles por api.
-
-Calcular los verdaderos números disponibles en el server.
-
-Inyectar los filtros usando React Query.
-

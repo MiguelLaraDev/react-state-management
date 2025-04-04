@@ -4,22 +4,18 @@ import type { Instrument } from "../../interfaces/instruments.types";
 const filters: FilterOption[] = [
   {
     id: "category",
-    title: "Categories",
     items: [],
   },
   {
     id: "price",
-    title: "Price range",
     items: [],
   },
   {
     id: "score",
-    title: "Score",
     items: [],
   },
   {
     id: "availability",
-    title: "Availability",
     items: [],
   },
 ];
@@ -44,7 +40,7 @@ const getStarRating = (score: number): number => {
   return Math.ceil(clampedScore);
 };
 
-export const getFilters = (instruments: Instrument[]) => {
+export const getFilters = (instruments: Instrument[]): FilterOption[] => {
   const counts: Record<Filter, Record<string, number>> = {
     category: {},
     price: { "$0-$50": 0, "$50-$100": 0, "$100-$200": 0, "$200-$500": 0, "$500+": 0 },
@@ -70,8 +66,8 @@ export const getFilters = (instruments: Instrument[]) => {
   return filters.map((filter) => {
     return {
       ...filter,
-      items: Object.entries(counts[filter.id]).map(([label, count]) => ({
-        label,
+      items: Object.entries(counts[filter.id]).map(([id, count]) => ({
+        id,
         count,
       })),
     };

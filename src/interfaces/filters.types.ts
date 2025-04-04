@@ -2,9 +2,8 @@ export type Filter = "category" | "price" | "score" | "availability";
 
 export interface FilterOption {
   id: Filter;
-  title: string;
   items: {
-    label: string;
+    id: string;
     count: number;
   }[];
 }
