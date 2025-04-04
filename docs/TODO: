@@ -5,3 +5,8 @@ Recibir los filters disponibles por api.
 Calcular los verdaderos números disponibles en el server.
 
 Inyectar los filtros usando React Query.
+
+
+// For each filter, for instance "categories"
+// we need to create a FilterOption for each category "guitars", "drums", etc.
+//      inside each FilterOption, we need to count how many instruments are in that category.

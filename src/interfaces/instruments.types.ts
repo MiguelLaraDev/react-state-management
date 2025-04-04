@@ -1,5 +1,6 @@
-export type SortDirection = "asc" | "desc";
-export type SortableField = "name" | "price"; // Add more fields as needed
+import type { Category } from "./categories.types";
+import type { Filter } from "./filters.types";
+import type { Availability, SortDirection } from "./shared.types";
 
 export interface InstrumentFilterOptions {
   categories?: Instrument["category"][];
@@ -7,7 +8,7 @@ export interface InstrumentFilterOptions {
   scoreRange?: { min: number; max: number };
   availability?: Instrument["availability"][];
   sortBy?: {
-    field: SortableField;
+    field: Filter;
     direction: SortDirection;
   };
   pagination?: {
@@ -17,8 +18,8 @@ export interface InstrumentFilterOptions {
 }
 
 export interface Instrument {
-  availability: "available" | "few-left" | "sold-out";
-  category: "guitars" | "drums" | "synths" | "microphones";
+  availability: Availability;
+  category: Category;
   description: string;
   long_description?: string;
   id: number;
@@ -29,12 +30,4 @@ export interface Instrument {
   slug: string;
   thumb_medium: string;
   thumb_small: string;
-}
-
-export interface InstrumentsApiResponse {
-  currentPage: number;
-  data: Instrument[];
-  nextPage: number | null; // null when no more pages
-  totalItems: number;
-  totalPages: number;
 }

@@ -2,12 +2,10 @@ import { memo } from "react";
 
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
-import type { Instrument } from "../interfaces/types";
+import type { Instrument } from "../interfaces/instruments.types";
 import Layout from "../shared/Layout";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
-  // console.log("List render:", new Date().toISOString());
-
   return (
     <>
       {instruments.map((instrument) => (
@@ -31,8 +29,6 @@ const InstrumentsList = () => {
   if (!instruments) {
     return <div>No data available</div>;
   }
-
-  // console.log("render:", new Date().toISOString());
 
   return (
     /* TODO: Add the number of instruments near the title: */
