@@ -1,34 +1,28 @@
 import { useEffect } from "react";
 
-const useFixedPositionOnScroll = (
-  ref: React.RefObject<HTMLElement | null>,
-  offset: number,
-  padding = 0
-) => {
-  const style = `position: fixed; top: ${offset - padding}px;`;
-
+const useFixedPositionOnScroll = (id: string, offset: number, padding = 0) => {
   useEffect(() => {
-    const { current } = ref;
-
-    if (!current) return;
-
     let lastScrollY = window.scrollY;
     let ticking = false;
 
     const handleScroll = () => {
       if (ticking) return;
 
+      const ref = document.querySelector(`#${id}`);
+      if (!ref) return;
+
+      const style = `position: fixed; top: ${offset - padding}px;`;
       ticking = true;
 
       window.requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
         const scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
-        const yPos = current?.getBoundingClientRect().y || 0;
+        const yPos = ref?.getBoundingClientRect().y || 0;
 
         if (scrollDirection === "down" && yPos < offset) {
-          current.setAttribute("style", style);
+          ref.setAttribute("style", style);
         } else if (scrollDirection === "up" && currentScrollY <= offset) {
-          current.removeAttribute("style");
+          ref.removeAttribute("style");
         }
 
         lastScrollY = currentScrollY;
@@ -41,6 +35,6 @@ const useFixedPositionOnScroll = (
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [ref, offset, style]);
+  }, [offset, padding]);
 };
 export default useFixedPositionOnScroll;

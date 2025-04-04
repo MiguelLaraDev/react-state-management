@@ -1,13 +1,12 @@
 import classNames from "classnames";
-import { useRef } from "react";
+
 import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 
 const Filter = () => {
   const { filters, status, error } = useFiltersFetch();
 
-  const ref = useRef<HTMLDivElement>(null);
-  useFixedPositionOnScroll(ref, 70, 10);
+  useFixedPositionOnScroll("filter", 70, 10);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -18,7 +17,7 @@ const Filter = () => {
   }
 
   return (
-    <div ref={ref} className={classNames("w-full h-full flex flex-col gap-8")}>
+    <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
       {filters.map(({ title, items }) => {
         return (
           <div key={title} className='flex flex-col gap-2'>
