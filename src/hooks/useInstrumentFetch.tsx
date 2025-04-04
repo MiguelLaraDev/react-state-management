@@ -7,7 +7,7 @@ import type { Instrument } from "../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../interfaces/shared.types";
 
 const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentApiResponse> => {
-  const response = await fetch(`/api/instruments?page=${context.pageParam}?filters=`);
+  const response = await fetch(`/api/instruments?page=${context.pageParam}`);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
