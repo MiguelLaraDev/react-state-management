@@ -1,22 +1,35 @@
 import { create } from "zustand";
+import type { Filter } from "../interfaces/filters.types";
 
 type FiltersStore = {
-  count: number;
-  increment: () => void;
-  incrementAsync: () => Promise<void>;
-  decrement: () => void;
+  options: Record<Filter, string[]>;
+  toggleOption: (type: Filter, option: string) => void;
+};
+
+const defaultStore = {
+  category: [],
+  price: [],
+  score: [],
+  availability: [],
 };
 
 export const useFiltersStore = create<FiltersStore>((set) => ({
-  count: 0,
-  increment: () => {
-    set((state) => ({ count: state.count + 1 }));
-  },
-  incrementAsync: async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    set((state) => ({ count: state.count + 1 }));
-  },
-  decrement: () => {
-    set((state) => ({ count: state.count - 1 }));
+  options: defaultStore,
+  toggleOption: (type, option) => {
+    set((state) => {
+      const currentOptions = state.options[type];
+      const optionExists = currentOptions.includes(option);
+
+      const newOptions = optionExists
+        ? currentOptions.filter((item) => item !== option) // remove if exists
+        : [...currentOptions, option]; // add if doesn't exist
+
+      return {
+        options: {
+          ...state.options,
+          [type]: newOptions,
+        },
+      };
+    });
   },
 }));

@@ -2,9 +2,10 @@ import classNames from "classnames";
 
 interface CheckboxProps {
   label: string | null;
+  onClick: () => void;
 }
 
-const Checkbox = ({ label }: CheckboxProps) => {
+const Checkbox = ({ label, onClick }: CheckboxProps) => {
   return (
     <div className='flex flex-row gap-2 items-center'>
       <input
@@ -17,6 +18,7 @@ const Checkbox = ({ label }: CheckboxProps) => {
           "focus:outline-none focus:ring-offset-0 focus:ring-2 focus:ring-neutral-100",
           "disabled:border-steel-400 disabled:bg-steel-400 disabled:cursor-not-allowed"
         )}
+        onClick={onClick}
       />
       <svg
         className='absolute w-4 h-4 mt-1 ml-1 hidden peer-checked:block pointer-events-none'

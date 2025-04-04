@@ -1,8 +1,10 @@
 import classNames from "classnames";
 
+import { useMemo } from "react";
 import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
+import { useFiltersStore } from "../stores/filters.store";
 import Checkbox from "./Checkbox";
 import Score from "./Score";
 
@@ -15,9 +17,17 @@ const titles: Record<Filter, string> = {
 };
 
 const Filter = () => {
-  const { filters, status, error } = useFiltersFetch();
-
   useFixedPositionOnScroll("filter", 70, 10);
+
+  const result = useFiltersFetch();
+  const { status, error } = result;
+
+  const store = useFiltersStore();
+  const filters = useMemo(() => result.filters, [result.filters]);
+
+  const onFilterItemSelected = (filterType: Filter, optionId: string) => {
+    store.toggleOption(filterType, optionId);
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -30,6 +40,7 @@ const Filter = () => {
   return (
     <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
       {filters.map((filter) => {
+        // TODO: Memoize list:
         const items = filter.id === "score" ? [...filter.items].reverse() : filter.items;
 
         return (
@@ -40,9 +51,13 @@ const Filter = () => {
               {items.map((item) => {
                 const label = filter.id === "score" ? null : item.id;
 
+                // TODO: Memoize item:
                 return (
                   <li key={item.id} className='flex flex-row gap-2 items-center'>
-                    <Checkbox label={label} />
+                    <Checkbox
+                      label={label}
+                      onClick={() => onFilterItemSelected(filter.id, item.id)}
+                    />
 
                     {filter.id === "score" && <Score score={parseInt(item.id) - 1} />}
 

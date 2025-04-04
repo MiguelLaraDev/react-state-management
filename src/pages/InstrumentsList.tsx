@@ -4,6 +4,7 @@ import InstrumentItem from "../components/instruments/InstrumentItem";
 import Layout from "../components/Layout";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
+import { useFiltersStore } from "../stores/filters.store";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
   return (
@@ -16,7 +17,9 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
 });
 
 const InstrumentsList = () => {
-  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
+  const options = useFiltersStore((state) => state.options);
+
+  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch(options);
 
   if (status === "pending") {
     return <div>Loading...</div>;
