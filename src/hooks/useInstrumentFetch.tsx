@@ -6,24 +6,30 @@ import type { Filter } from "../interfaces/filters.types";
 import type { Instrument } from "../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../interfaces/shared.types";
 
-const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentApiResponse> => {
-  const response = await fetch(`/api/instruments?page=${context.pageParam}`);
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-
-  return response.json();
+const convertFiltersToQueryParam = (filters: Record<Filter, string[]>) => {
+  return Object.entries(filters).reduce(
+    (acc, [key, value]) => `${acc}&${key}=${value.join("|")}`,
+    ""
+  );
 };
 
-const useInstrumentFetch = (filters?: Record<Filter, string[]>) => {
-  // TODO: Parse filters, and inject into the fetch:
-  console.log("Filters:", filters);
+const useInstrumentFetch = (filters: Record<Filter, string[]>) => {
+  console.log(filters);
 
   const { ref, inView } = useInView();
 
+  const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentApiResponse> => {
+    const param = convertFiltersToQueryParam(filters);
+    const url = `/api/instruments?page=${context.pageParam}&${param}`;
+    const response = await fetch(url);
+
+    if (!response.ok) throw new Error("Network response was not ok");
+
+    return response.json();
+  };
+
   const { data, error, status, isFetchingNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: ["instruments"],
+    queryKey: ["instruments" /* filters */],
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
     queryFn: fetchItems,

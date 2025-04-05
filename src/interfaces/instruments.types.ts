@@ -3,10 +3,16 @@ import type { Filter } from "./filters.types";
 import type { Availability, SortDirection } from "./shared.types";
 
 export interface InstrumentFilterOptions {
-  categories?: Instrument["category"][];
-  priceRanges?: { min: number; max: number }[];
-  scoreRange?: { min: number; max: number };
   availability?: Instrument["availability"][];
+  categories?: Instrument["category"][];
+  priceRanges?: {
+    min: number;
+    max: number;
+  }[];
+  scoreRange?: {
+    min: number;
+    max: number;
+  };
   sortBy?: {
     field: Filter;
     direction: SortDirection;

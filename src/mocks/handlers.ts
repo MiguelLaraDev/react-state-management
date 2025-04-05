@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import type { Instrument, InstrumentFilterOptions } from "../interfaces/instruments.types";
 
+import type { Instrument, InstrumentFilterOptions } from "../interfaces/instruments.types";
 import db from "./database.json";
 import { getFilters } from "./helpers/filters.helper";
 import { getFilteredInstruments } from "./helpers/instruments.helper";
@@ -8,11 +8,16 @@ import { getFilteredInstruments } from "./helpers/instruments.helper";
 export const handlers = [
   http.get("/api/instruments", ({ request }) => {
     const url = new URL(request.url);
-    const page = url.searchParams.get("page");
+    const params = Object.fromEntries(url.searchParams.entries());
+
+    const filters = Object.entries(params)
+      .filter(([key, value]) => key !== "page" && value !== "")
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value.split("|") }), {});
 
     const options: InstrumentFilterOptions = {
+      ...filters,
       pagination: {
-        page: Number(page) || 1,
+        page: Number(params.page) || 1,
         pageSize: 10,
       },
     };
