@@ -23,15 +23,15 @@ const filters: FilterOption[] = [
 const getPriceRange = (price: number): string => {
   switch (true) {
     case price <= 50:
-      return "$0-$50";
+      return "0-50";
     case price <= 100:
-      return "$50-$100";
+      return "50-100";
     case price <= 200:
-      return "$100-$200";
+      return "100-200";
     case price <= 500:
-      return "$200-$500";
+      return "200-500";
     default:
-      return "$500+";
+      return "500+";
   }
 };
 
@@ -43,7 +43,7 @@ const getStarRating = (score: number): number => {
 export const getFilters = (instruments: Instrument[]): FilterOption[] => {
   const counts: Record<Filter, Record<string, number>> = {
     category: {},
-    price: { "$0-$50": 0, "$50-$100": 0, "$100-$200": 0, "$200-$500": 0, "$500+": 0 },
+    price: { "0-50": 0, "50-100": 0, "100-200": 0, "200-500": 0, "500+": 0 },
     score: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
     availability: {},
   };

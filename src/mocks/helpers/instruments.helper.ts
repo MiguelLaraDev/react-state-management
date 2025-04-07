@@ -9,13 +9,24 @@ export const selectByField = <FieldName extends keyof Instrument>(
   return instruments.filter((instrument) => instrument[field] === value);
 };
 
+const priceChecker = (instrumentPrice: number, priceRanges: string[]) => {
+  if (priceRanges.length === 0) {
+    return true;
+  }
+
+  return priceRanges.some((range) => {
+    const [min, max] = range.replace("+", "-500").split("-").map(Number);
+    return instrumentPrice >= min && instrumentPrice <= max;
+  });
+};
+
 export const getFilteredInstruments = (
   instruments: Instrument[],
   options: InstrumentFilterOptions = {}
 ): InstrumentApiResponse => {
   const {
-    categories = [],
-    priceRanges = [],
+    category = [],
+    price = [],
     scoreRange = { min: 0, max: 5 },
     availability = [],
     sortBy = { field: "name", direction: "asc" },
@@ -24,14 +35,11 @@ export const getFilteredInstruments = (
 
   // 1. Apply filters
   const results = instruments.filter((instrument) => {
-    const categoryMatch = categories.length === 0 || categories.includes(instrument.category);
+    const categoryMatch = category.length === 0 || category.includes(instrument.category);
 
-    const priceMatch =
-      priceRanges?.length > 0
-        ? priceRanges.some(
-            (range) => instrument.price >= range.min && instrument.price <= range.max
-          )
-        : true;
+    priceChecker(instrument.price, price);
+
+    const priceMatch = priceChecker(instrument.price, price);
 
     const scoreMatch = scoreRange
       ? instrument.score >= scoreRange.min && instrument.score <= scoreRange.max

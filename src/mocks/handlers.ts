@@ -24,19 +24,13 @@ export const handlers = [
 
     const result = getFilteredInstruments(db as Instrument[], options);
 
+    console.log(result);
+
     return HttpResponse.json(result, { status: 200 });
-  }),
-
-  http.get("/api/categories", () => {
-    const categories = db.map((instrument) => instrument.category);
-    const uniqueCategories = Array.from(new Set(categories));
-
-    return HttpResponse.json(uniqueCategories, { status: 200 });
   }),
 
   http.get("/api/filters", () => {
     const filters = getFilters(db as Instrument[]);
-
     return HttpResponse.json(filters, { status: 200 });
   }),
 ];

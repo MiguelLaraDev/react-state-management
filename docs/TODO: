@@ -1,9 +1,7 @@
 TODO:
 
-Aplicar los filters al fetch de instruments.
-
-Diseño del filtro con detalles visuales.
-
-Prefetch.
-
-fecth de los locales.
+If a click a instrument filter (for example guitar) 
+    The following filters should be updated.
+    For example: 
+        I click guitar, 
+        the prices filters should display only the price ranges of guitars.

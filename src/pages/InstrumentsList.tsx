@@ -25,15 +25,13 @@ const InstrumentsList = () => {
     /* TODO: Add the number of instruments near the title: */
     <Layout title='Choose your instruments'>
       <div className='w-full h-fit flex flex-col gap-4'>
-        {status === "pending" && <div className='text-green-500'>Loading...</div>}
+        {status === "pending" && <h1 className='text-green-500 text-5xl'>Loading...</h1>}
 
         {status === "error" && <div>Error: {error?.message}</div>}
 
         <List instruments={instruments || []} />
 
-        <div ref={ref} className='text-red-500'>
-          {isFetchingNextPage && "Loading..."}
-        </div>
+        <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
       </div>
     </Layout>
   );
