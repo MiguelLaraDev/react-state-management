@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, type QueryFunctionContext } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -6,30 +6,32 @@ import type { Filter } from "../interfaces/filters.types";
 import type { Instrument } from "../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../interfaces/shared.types";
 
-const convertFiltersToQueryParam = (filters: Record<Filter, string[]>) => {
+type InjectedFilters = Record<Filter, string[]>;
+
+const parseFilters = (filters: InjectedFilters) => {
   return Object.entries(filters).reduce(
     (acc, [key, value]) => `${acc}&${key}=${value.join("|")}`,
     ""
   );
 };
 
-const useInstrumentFetch = (filters: Record<Filter, string[]>) => {
-  console.log(filters);
+const fetchItems = async (context: QueryFunctionContext): Promise<InstrumentApiResponse> => {
+  const { pageParam, queryKey } = context;
+  const urlParams = queryKey[1];
+  const url = `/api/instruments?page=${pageParam}${urlParams}`;
+  const response = await fetch(url);
 
+  if (!response.ok) throw new Error("Network response was not ok");
+
+  return response.json();
+};
+
+const useInstrumentFetch = (filters: InjectedFilters) => {
   const { ref, inView } = useInView();
-
-  const fetchItems = async (context: { pageParam?: number }): Promise<InstrumentApiResponse> => {
-    const param = convertFiltersToQueryParam(filters);
-    const url = `/api/instruments?page=${context.pageParam}&${param}`;
-    const response = await fetch(url);
-
-    if (!response.ok) throw new Error("Network response was not ok");
-
-    return response.json();
-  };
+  const urlParams = useMemo(() => parseFilters(filters), [filters]);
 
   const { data, error, status, isFetchingNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: ["instruments" /* filters */],
+    queryKey: ["instruments", urlParams],
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
     queryFn: fetchItems,
@@ -40,6 +42,10 @@ const useInstrumentFetch = (filters: Record<Filter, string[]>) => {
       fetchNextPage();
     }
   }, [fetchNextPage, inView]);
+
+  useEffect(() => {
+    console.log("filters changes");
+  }, [urlParams]);
 
   const instruments = useMemo(() => {
     return data?.pages.flatMap((page) => page.data as Instrument[]) || null;
