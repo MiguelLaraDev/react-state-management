@@ -78,7 +78,7 @@ const CartWidget = () => {
             {count > 0 && (
               <>
                 {cart.map((item) => (
-                  <CartWidgetItem item={item} onRemove={() => remove(item.id)} />
+                  <CartWidgetItem key={item.id} item={item} onRemove={() => remove(item.id)} />
                 ))}
 
                 <div className='flex flex-row items-center gap-2 pt-3 border-t border-t-neutral-200'>

@@ -1,5 +1,13 @@
 TODO:
 
+SortBy: 
+    Listen when change and refetch instruments.
+    The items list should be pulled from the api.
+
+Show the total number of instruments.
+
+Check filtering by ratings and availability.
+
 If a click a instrument filter (for example guitar) 
     The following filters should be updated.
     For example: 
@@ -20,3 +28,7 @@ Instrument page:
     Add breadscrumb.
 
 Set responsive.
+
+Add some cool animations.
+
+Add testings.
