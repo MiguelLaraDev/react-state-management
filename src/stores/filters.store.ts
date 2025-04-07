@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { Filter } from "../interfaces/filters.types";
 
-type FiltersStore = {
+type UserSelectionStore = {
   options: Record<Filter, string[]>;
   toggleOption: (type: Filter, option: string) => void;
 };
@@ -13,7 +13,7 @@ const defaultStore = {
   availability: [],
 };
 
-export const useFiltersStore = create<FiltersStore>((set) => ({
+export const useUserSelectionStore = create<UserSelectionStore>((set) => ({
   options: defaultStore,
   toggleOption: (type, option) => {
     set((state) => {
@@ -21,8 +21,8 @@ export const useFiltersStore = create<FiltersStore>((set) => ({
       const optionExists = currentOptions.includes(option);
 
       const newOptions = optionExists
-        ? currentOptions.filter((item) => item !== option) // remove if exists
-        : [...currentOptions, option]; // add if doesn't exist
+        ? currentOptions.filter((item) => item !== option)
+        : [...currentOptions, option];
 
       return {
         options: {

@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
-import { useFiltersStore } from "../stores/filters.store";
+import { useUserSelectionStore } from "../stores/filters.store";
 import Checkbox from "./Checkbox";
 import Score from "./Score";
 
@@ -21,24 +21,20 @@ const Filter = () => {
 
   const result = useFiltersFetch();
   const { status, error } = result;
-
-  const store = useFiltersStore();
   const filters = useMemo(() => result.filters, [result.filters]);
+
+  const store = useUserSelectionStore();
 
   const onFilterItemSelected = (filterType: Filter, optionId: string) => {
     store.toggleOption(filterType, optionId);
   };
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (status === "pending") {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
+      {status === "pending" && <h1>Loading...</h1>}
+
+      {error && <div>Error: {error.message}</div>}
+
       {filters.map((filter) => {
         // TODO: Memoize list:
         const items = filter.id === "score" ? [...filter.items].reverse() : filter.items;

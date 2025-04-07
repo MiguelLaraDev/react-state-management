@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import type { FilterOption } from "../interfaces/filters.types";
-import type { ApiResponse } from "../interfaces/shared.types";
 
-const fetchItems = async (): Promise<ApiResponse> => {
+const fetchItems = async (): Promise<FilterOption[]> => {
   const response = await fetch(`/api/filters`);
 
   if (!response.ok) {
@@ -14,13 +13,19 @@ const fetchItems = async (): Promise<ApiResponse> => {
 };
 
 const useFiltersFetch = () => {
-  const result = useQuery({ queryKey: ["filters"], queryFn: fetchItems });
+  const [filters, setFilters] = useState<FilterOption[]>([]);
+
+  const result = useQuery({
+    queryKey: ["filters"],
+    queryFn: fetchItems,
+    enabled: filters.length === 0,
+  });
 
   const { data, error, status } = result;
 
-  const filters = useMemo(() => {
-    return (data || []) as FilterOption[];
-  }, [data]);
+  useEffect(() => {
+    if (filters.length === 0 && status === "success") setFilters(data);
+  }, [status, data, filters]);
 
   return {
     error,
