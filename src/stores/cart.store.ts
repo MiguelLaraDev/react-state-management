@@ -10,9 +10,11 @@ type CartStore = {
   add: (item: CartStoreItem) => void;
   remove: (id: number) => void;
   reset: () => void;
+  getCount: () => number;
+  getTotalPrice: () => number;
 };
 
-export const useCartStore = create<CartStore>((set) => ({
+export const useCartStore = create<CartStore>((set, get) => ({
   cart: [],
   add: (item) => {
     set((state) => {
@@ -35,5 +37,11 @@ export const useCartStore = create<CartStore>((set) => ({
   },
   reset: () => {
     set(() => ({ cart: [] }));
+  },
+  getCount: () => {
+    return get().cart.reduce((total, item) => total + item.quantity, 0);
+  },
+  getTotalPrice: () => {
+    return get().cart.reduce((total, item) => total + item.quantity * item.price, 0);
   },
 }));
