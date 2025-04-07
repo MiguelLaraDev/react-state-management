@@ -3,6 +3,7 @@ import { memo } from "react";
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import InstrumentLoading from "../components/instruments/InstrumentLoading";
 import Layout from "../components/Layout";
+import SortingBox from "../components/SortingBox";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
 import { useUserSelectionStore } from "../stores/filters.store";
@@ -40,7 +41,13 @@ const InstrumentsList = () => {
 
         {status === "pending" && <InstrumentLoading />}
 
-        {status === "success" && <List instruments={instruments || []} />}
+        {status === "success" && (
+          <>
+            <SortingBox />
+
+            <List instruments={instruments || []} />
+          </>
+        )}
 
         <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
       </div>
