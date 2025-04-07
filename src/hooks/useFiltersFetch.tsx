@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import type { FilterOption } from "../interfaces/filters.types";
 
 const fetchItems = async (): Promise<FilterOption[]> => {
-  const response = await fetch(`/api/filters`);
+  const response = await fetch("/api/filters");
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -13,6 +13,8 @@ const fetchItems = async (): Promise<FilterOption[]> => {
 };
 
 const useFiltersFetch = () => {
+  // TODO: Review it, we have the filters stored twice.
+  // In the useState, and in the react-query.
   const [filters, setFilters] = useState<FilterOption[]>([]);
 
   const result = useQuery({

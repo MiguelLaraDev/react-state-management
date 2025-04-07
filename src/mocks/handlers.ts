@@ -1,7 +1,8 @@
 import { http, HttpResponse } from "msw";
 
 import type { Instrument, InstrumentFilterOptions } from "../interfaces/instruments.types";
-import db from "./database.json";
+import db from "./data/database.json";
+import locale from "./data/localization.json";
 import { getFilters } from "./helpers/filters.helper";
 import { getFilteredInstruments } from "./helpers/instruments.helper";
 
@@ -23,14 +24,15 @@ export const handlers = [
     };
 
     const result = getFilteredInstruments(db as Instrument[], options);
-
-    console.log(result);
-
-    return HttpResponse.json(result, { status: 200 });
+    return HttpResponse.json(result);
   }),
 
   http.get("/api/filters", () => {
     const filters = getFilters(db as Instrument[]);
-    return HttpResponse.json(filters, { status: 200 });
+    return HttpResponse.json(filters);
+  }),
+
+  http.get("/api/locale", () => {
+    return HttpResponse.json(locale);
   }),
 ];

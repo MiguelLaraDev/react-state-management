@@ -5,19 +5,14 @@ import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
+import { useLocalizationStore } from "../stores/locale.store";
 import Checkbox from "./Checkbox";
 import Score from "./Score";
 
-// TODO: Import all locales from an api...
-const titles: Record<Filter, string> = {
-  category: "Categories",
-  price: "Price",
-  score: "Score",
-  availability: "Availability",
-};
-
 const Filter = () => {
   useFixedPositionOnScroll("filter", 70, 10);
+
+  const { locale } = useLocalizationStore();
 
   const result = useFiltersFetch();
   const { status, error } = result;
@@ -36,16 +31,15 @@ const Filter = () => {
       {error && <div>Error: {error.message}</div>}
 
       {filters.map((filter) => {
-        // TODO: Memoize list:
         const items = filter.id === "score" ? [...filter.items].reverse() : filter.items;
 
         return (
           <div key={filter.id} className='flex flex-col gap-2'>
-            <h3 className='font-semibold text-lg'>{titles[filter.id]}</h3>
+            <h3 className='font-semibold text-lg'>{locale[filter.id]}</h3>
 
             <ul className='flex flex-col gap-1 ml-2'>
               {items.map((item) => {
-                const label = filter.id === "score" ? null : item.id;
+                const label = filter.id === "score" ? null : (locale[item.id] ?? item.id);
 
                 // TODO: Memoize item:
                 return (

@@ -43,10 +43,6 @@ const useInstrumentFetch = (filters: InjectedFilters) => {
     }
   }, [fetchNextPage, inView]);
 
-  useEffect(() => {
-    console.log("filters changes");
-  }, [urlParams]);
-
   const instruments = useMemo(() => {
     return data?.pages.flatMap((page) => page.data as Instrument[]) || null;
   }, [data]);

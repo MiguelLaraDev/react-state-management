@@ -1,10 +1,11 @@
 import classNames from "classnames";
+import type { ReactElement } from "react";
 import Filter from "../components/Filter";
 import Header from "./Header";
 
 interface LayoutProps {
   children: React.ReactNode;
-  title: string;
+  title: ReactElement;
 }
 
 const Layout = ({ children, title }: LayoutProps) => {
