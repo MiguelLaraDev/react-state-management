@@ -3,18 +3,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { memo } from "react";
 
+import type { Instrument } from "../../interfaces/instruments.types";
+import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
 import { availabilityConfig } from "../../utils/configs";
 import Score from "../Score";
 
-interface InstrumentItemProps {
-  name: string;
-  description: string;
-  score: number;
-  price: number;
-  availability: keyof typeof availabilityConfig;
-}
+const InstrumentItem = ({
+  availability,
+  description,
+  id,
+  image,
+  name,
+  price,
+  score,
+  slug,
+}: Instrument) => {
+  const { add } = useCartStore();
 
-const InstrumentItem = ({ name, description, score, price, availability }: InstrumentItemProps) => {
+  const onCartButtonClicked = () => {
+    add({ id, image, name, price, slug } as CartStoreItem);
+  };
+
   return (
     <div className='w-full h-[200px] flex flex-row gap-0 p-0 rounded-xl border border-neutral-200 overflow-hidden'>
       <div className='w-1/4 min-w-[142px] h-full bg-white py-6'>
@@ -38,7 +47,7 @@ const InstrumentItem = ({ name, description, score, price, availability }: Instr
       <div className='w-1/4 flex flex-col items-end justify-between p-8'>
         <p className='font-bold text-3xl tracking-tighter whitespace-nowrap'>{price} €</p>
 
-        <button>
+        <button onClick={onCartButtonClicked}>
           <FontAwesomeIcon icon={faCartPlus} className='text-2xl text-neutral-700' />
         </button>
       </div>
