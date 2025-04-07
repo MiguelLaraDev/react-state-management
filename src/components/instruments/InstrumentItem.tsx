@@ -47,7 +47,14 @@ const InstrumentItem = ({
       <div className='w-1/4 flex flex-col items-end justify-between p-8'>
         <p className='font-bold text-3xl tracking-tighter whitespace-nowrap'>{price} €</p>
 
-        <button onClick={onCartButtonClicked}>
+        <button
+          className={classNames(
+            "w-12 h-12 rounded-full p-4",
+            "flex items-center justify-center",
+            "cursor-pointer hover:bg-neutral-200"
+          )}
+          onClick={onCartButtonClicked}
+        >
           <FontAwesomeIcon icon={faCartPlus} className='text-2xl text-neutral-700' />
         </button>
       </div>

@@ -15,11 +15,23 @@ type CartStore = {
 export const useCartStore = create<CartStore>((set) => ({
   cart: [],
   add: (item) => {
-    set((state) => ({ cart: [...state.cart, item] }));
+    set((state) => {
+      const existingIndex = state.cart.findIndex((v) => v.id === item.id);
+
+      if (existingIndex >= 0) {
+        const updatedCart = [...state.cart];
+        updatedCart[existingIndex] = {
+          ...updatedCart[existingIndex],
+          quantity: updatedCart[existingIndex].quantity + 1,
+        };
+        return { cart: updatedCart };
+      }
+
+      return { cart: [...state.cart, { ...item, quantity: 1 }] };
+    });
   },
   remove: (id) => {
-    console.log(id);
-    set((state) => ({ cart: [...state.cart] }));
+    set((state) => ({ cart: state.cart.filter((item) => item.id !== id) }));
   },
   reset: () => {
     set(() => ({ cart: [] }));

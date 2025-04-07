@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 
-import { useCartStore, type CartStoreItem } from "../stores/cart.store";
+import { useCartStore } from "../stores/cart.store";
 
-const CartWidgetItem = ({ item, onRemove }: { item: CartStoreItem; onRemove: () => void }) => {
+const CartWidgetItem = ({ item, onRemove }) => {
   const { id, name, price, quantity } = item;
 
   return (
@@ -46,19 +46,13 @@ const CartWidget = () => {
               "flex flex-col gap-6 shadow-md"
             )}
           >
-            {count > 0 && (
-              <>
-                {cart.map((item) => (
-                  <CartWidgetItem item={item} onRemove={() => remove(item.id)} />
-                ))}
+            {cart.map((item) => (
+              <CartWidgetItem {...item} onRemove={() => remove(item.id)} />
+            ))}
 
-                <div className='flex flex-row items-center gap-2 pt-3 border-t border-t-neutral-200'>
-                  <p className='ml-auto font-bold'>Total: NNNN €</p>
-                </div>
-              </>
-            )}
-
-            {count === 0 && <p>No items yet!</p>}
+            <div className='flex flex-row items-center gap-2 pt-3 border-t border-t-neutral-200'>
+              <p className='ml-auto font-bold'>Total: 27 €</p>
+            </div>
           </div>,
           document.body
         )}
