@@ -1,6 +1,7 @@
 import { memo } from "react";
 
 import InstrumentItem from "../components/instruments/InstrumentItem";
+import InstrumentLoading from "../components/instruments/InstrumentLoading";
 import Layout from "../components/Layout";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
@@ -35,11 +36,11 @@ const InstrumentsList = () => {
   return (
     <Layout title={title}>
       <div className='w-full h-fit flex flex-col gap-4'>
-        {status === "pending" && <h1 className='text-green-500 text-5xl'>Loading...</h1>}
-
         {status === "error" && <div>Error: {error?.message}</div>}
 
-        <List instruments={instruments || []} />
+        {status === "pending" && <InstrumentLoading />}
+
+        {status === "success" && <List instruments={instruments || []} />}
 
         <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
       </div>

@@ -6,6 +6,7 @@ import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
+import FiltersLoading from "./filters/FiltersLoading";
 import Checkbox from "./Checkbox";
 import Score from "./Score";
 
@@ -26,39 +27,40 @@ const Filter = () => {
 
   return (
     <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
-      {status === "pending" && <h1>Loading...</h1>}
-
       {error && <div>Error: {error.message}</div>}
 
-      {filters.map((filter) => {
-        const items = filter.id === "score" ? [...filter.items].reverse() : filter.items;
+      {status === "pending" && <FiltersLoading />}
 
-        return (
-          <div key={filter.id} className='flex flex-col gap-2'>
-            <h3 className='font-semibold text-lg'>{locale[filter.id]}</h3>
+      {status === "success" &&
+        filters.map((filter) => {
+          const items = filter.id === "score" ? [...filter.items].reverse() : filter.items;
 
-            <ul className='flex flex-col gap-1 ml-2'>
-              {items.map((item) => {
-                const label = filter.id === "score" ? null : (locale[item.id] ?? item.id);
+          return (
+            <div key={filter.id} className='flex flex-col gap-2'>
+              <h3 className='font-semibold text-lg'>{locale[filter.id]}</h3>
 
-                // TODO: Memoize item:
-                return (
-                  <li key={item.id} className='flex flex-row gap-2 items-center'>
-                    <Checkbox
-                      label={label}
-                      onClick={() => onFilterItemSelected(filter.id, item.id)}
-                    />
+              <ul className='flex flex-col gap-1 ml-2'>
+                {items.map((item) => {
+                  const label = filter.id === "score" ? null : (locale[item.id] ?? item.id);
 
-                    {filter.id === "score" && <Score score={parseInt(item.id) - 1} />}
+                  // TODO: Memoize item:
+                  return (
+                    <li key={item.id} className='flex flex-row gap-2 items-center'>
+                      <Checkbox
+                        label={label}
+                        onClick={() => onFilterItemSelected(filter.id, item.id)}
+                      />
 
-                    <span className='text-xs'>({item.count})</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        );
-      })}
+                      {filter.id === "score" && <Score score={parseInt(item.id) - 1} />}
+
+                      <span className='text-xs'>({item.count})</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
     </div>
   );
 };

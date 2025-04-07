@@ -1,4 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 
 import type { Instrument, InstrumentFilterOptions } from "../interfaces/instruments.types";
 import db from "./data/database.json";
@@ -7,7 +7,7 @@ import { getFilters } from "./helpers/filters.helper";
 import { getFilteredInstruments } from "./helpers/instruments.helper";
 
 export const handlers = [
-  http.get("/api/instruments", ({ request }) => {
+  http.get("/api/instruments", async ({ request }) => {
     const url = new URL(request.url);
     const params = Object.fromEntries(url.searchParams.entries());
 
@@ -23,12 +23,17 @@ export const handlers = [
       },
     };
 
+    await delay(1500);
+
     const result = getFilteredInstruments(db as Instrument[], options);
     return HttpResponse.json(result);
   }),
 
-  http.get("/api/filters", () => {
+  http.get("/api/filters", async () => {
     const filters = getFilters(db as Instrument[]);
+
+    await delay(2500);
+
     return HttpResponse.json(filters);
   }),
 
