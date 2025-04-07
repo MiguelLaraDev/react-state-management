@@ -1,7 +1,7 @@
 import { faCheck, faSort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const items = [
   {
@@ -23,8 +23,9 @@ const items = [
 ];
 
 const SortingBox = () => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [selected, setSelected] = useState("price-asc");
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     // TODO: Trigger animation here?
@@ -37,9 +38,23 @@ const SortingBox = () => {
     setExpanded(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className='w-full h-8 flex flex-row items-center justify-end'>
-      <div id='sorting-dropdown' className='relative flex flex-col gap-4'>
+      <div ref={dropdownRef} id='sorting-dropdown' className='relative flex flex-col gap-4'>
         <button
           className={classNames(
             "w-fit h-8 flex flex-row items-center gap-2 px-4",
