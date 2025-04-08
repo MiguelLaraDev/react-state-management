@@ -848,9 +848,9 @@
     "long_description": "The world's most popular vocal mic with tailored frequency response and built-in spherical filter to minimize breath/wind noise while delivering crisp vocals.",
     "availability": "available",
     "score": 4.7,
-    "thumb_small": "/images/guitars/750/SM58-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/SM58-large.jpg?width=400",
-    "image": "/images/guitars/750/SM58-large.jpg",
+    "thumb_small": "/images/microphones/1.webp",
+    "thumb_medium": "/images/microphones/1.webp",
+    "image": "/images/microphones/1.webp",
     "category": "microphones"
   },
   {
@@ -862,9 +862,9 @@
     "long_description": "Large-diaphragm condenser with three polar patterns, low-noise circuitry, and legendary Neumann sound quality. The gold standard for vocal recording.",
     "availability": "available",
     "score": 4.9,
-    "thumb_small": "/images/guitars/750/U87Ai-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/U87Ai-large.jpg?width=400",
-    "image": "/images/guitars/750/U87Ai-large.jpg",
+    "thumb_small": "/images/microphones/2.webp",
+    "thumb_medium": "/images/microphones/2.webp",
+    "image": "/images/microphones/2.webp",
     "category": "microphones"
   },
   {
@@ -876,9 +876,9 @@
     "long_description": "Cardioid condenser microphone with custom-engineered low-mass diaphragm for extended frequency response and superior transient response.",
     "availability": "available",
     "score": 4.3,
-    "thumb_small": "/images/guitars/750/AT2020-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/AT2020-large.jpg?width=400",
-    "image": "/images/guitars/750/AT2020-large.jpg",
+    "thumb_small": "/images/microphones/3.webp",
+    "thumb_medium": "/images/microphones/3.webp",
+    "image": "/images/microphones/3.webp",
     "category": "microphones"
   },
   {
@@ -890,9 +890,9 @@
     "long_description": "Nine selectable polar patterns and three pad/rolloff settings make this ideal for vocals, instruments, and studio applications. Transparent, detailed sound.",
     "availability": "available",
     "score": 4.6,
-    "thumb_small": "/images/guitars/750/C414XLII-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/C414XLII-large.jpg?width=400",
-    "image": "/images/guitars/750/C414XLII-large.jpg",
+    "thumb_small": "/images/microphones/4.webp",
+    "thumb_medium": "/images/microphones/4.webp",
+    "image": "/images/microphones/4.webp",
     "category": "microphones"
   },
   {
@@ -904,9 +904,9 @@
     "long_description": "Five-position bass roll-off switch and presence peak for tailored frequency response. Ideal for vocals, drums, and brass instruments.",
     "availability": "available",
     "score": 4.4,
-    "thumb_small": "/images/guitars/750/MD421II-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/MD421II-large.jpg?width=400",
-    "image": "/images/guitars/750/MD421II-large.jpg",
+    "thumb_small": "/images/microphones/5.webp",
+    "thumb_medium": "/images/microphones/5.webp",
+    "image": "/images/microphones/5.webp",
     "category": "microphones"
   },
   {
@@ -918,9 +918,9 @@
     "long_description": "1 gold-sputtered capsule with cardioid polar pattern. Includes shock mount and pop filter. Ultra-low self-noise of 5dBA.",
     "availability": "available",
     "score": 4.4,
-    "thumb_small": "/images/guitars/750/NT1A-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/NT1A-large.jpg?width=400",
-    "image": "/images/guitars/750/NT1A-large.jpg",
+    "thumb_small": "/images/microphones/6.webp",
+    "thumb_medium": "/images/microphones/6.webp",
+    "image": "/images/microphones/6.webp",
     "category": "microphones"
   },
   {
@@ -932,9 +932,9 @@
     "long_description": "Supercardioid dynamic microphone optimized for low-frequency reproduction. Ideal for kick drums and bass amplifiers with enhanced low-end response.",
     "availability": "available",
     "score": 4.6,
-    "thumb_small": "/images/guitars/750/BETA52A-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/BETA52A-large.jpg?width=400",
-    "image": "/images/guitars/750/BETA52A-large.jpg",
+    "thumb_small": "/images/microphones/7.webp",
+    "thumb_medium": "/images/microphones/7.webp",
+    "image": "/images/microphones/7.webp",
     "category": "microphones"
   },
   {
@@ -946,9 +946,9 @@
     "long_description": "Large-diaphragm condenser with vintage-inspired design. Focus Control switch adjusts polar pattern for different recording situations.",
     "availability": "available",
     "score": 4.2,
-    "thumb_small": "/images/guitars/750/Spark-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/Spark-large.jpg?width=400",
-    "image": "/images/guitars/750/Spark-large.jpg",
+    "thumb_small": "/images/microphones/8.webp",
+    "thumb_medium": "/images/microphones/8.webp",
+    "image": "/images/microphones/8.webp",
     "category": "microphones"
   },
   {
@@ -960,9 +960,9 @@
     "long_description": "Flat-profile dynamic microphone perfect for miking guitar amps. Supercardioid pattern rejects off-axis noise while capturing amp tone accurately.",
     "availability": "available",
     "score": 4.3,
-    "thumb_small": "/images/guitars/750/e609Silv-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/e609Silv-large.jpg?width=400",
-    "image": "/images/guitars/750/e609Silv-large.jpg",
+    "thumb_small": "/images/microphones/9.webp",
+    "thumb_medium": "/images/microphones/9.webp",
+    "image": "/images/microphones/9.webp",
     "category": "microphones"
   },
   {
@@ -974,9 +974,9 @@
     "long_description": "Variable-D technology minimizes proximity effect for consistent tone. Internal pop filter and humbucking coil for clean recordings.",
     "availability": "available",
     "score": 4.5,
-    "thumb_small": "/images/guitars/750/RE20-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/RE20-large.jpg?width=400",
-    "image": "/images/guitars/750/RE20-large.jpg",
+    "thumb_small": "/images/microphones/10.webp",
+    "thumb_medium": "/images/microphones/10.webp",
+    "image": "/images/microphones/10.webp",
     "category": "microphones"
   },
   {
@@ -988,9 +988,9 @@
     "long_description": "Recreates the legendary C12 sound with dual-diaphragm capsule and tube electronics. Nine selectable polar patterns for versatile recording.",
     "availability": "few-left",
     "score": 4.9,
-    "thumb_small": "/images/guitars/750/C12VR-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/C12VR-large.jpg?width=400",
-    "image": "/images/guitars/750/C12VR-large.jpg",
+    "thumb_small": "/images/microphones/11.webp",
+    "thumb_medium": "/images/microphones/11.webp",
+    "image": "/images/microphones/11.webp",
     "category": "microphones"
   },
   {
@@ -1002,9 +1002,9 @@
     "long_description": "Large-diaphragm condenser with cardioid pattern. Includes shock mount for home studio use. Great for vocals and acoustic instruments.",
     "availability": "available",
     "score": 3.9,
-    "thumb_small": "/images/guitars/750/MXL990-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/MXL990-large.jpg?width=400",
-    "image": "/images/guitars/750/MXL990-large.jpg",
+    "thumb_small": "/images/microphones/12.webp",
+    "thumb_medium": "/images/microphones/12.webp",
+    "image": "/images/microphones/12.webp",
     "category": "microphones"
   },
   {
@@ -1016,9 +1016,9 @@
     "long_description": "Popular for vocals, podcasts, and broadcasting. Smooth, flat frequency response with bass roll-off and presence boost controls.",
     "availability": "available",
     "score": 4.7,
-    "thumb_small": "/images/guitars/750/SM7B-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/SM7B-large.jpg?width=400",
-    "image": "/images/guitars/750/SM7B-large.jpg",
+    "thumb_small": "/images/microphones/13.webp",
+    "thumb_medium": "/images/microphones/13.webp",
+    "image": "/images/microphones/13.webp",
     "category": "microphones"
   },
   {
@@ -1030,9 +1030,9 @@
     "long_description": "Supercardioid dynamic mic with detailed sound reproduction. Hand-built in USA with custom-wound transformer and premium components.",
     "availability": "available",
     "score": 4.6,
-    "thumb_small": "/images/guitars/750/M80-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/M80-large.jpg?width=400",
-    "image": "/images/guitars/750/M80-large.jpg",
+    "thumb_small": "/images/microphones/14.webp",
+    "thumb_medium": "/images/microphones/14.webp",
+    "image": "/images/microphones/14.webp",
     "category": "microphones"
   },
   {
@@ -1044,9 +1044,9 @@
     "long_description": "Wide frequency response (28Hz-18kHz) for a dynamic mic. Excellent for vocals, voice-over, and instruments with minimal proximity effect.",
     "availability": "available",
     "score": 4.4,
-    "thumb_small": "/images/guitars/750/PR40-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/PR40-large.jpg?width=400",
-    "image": "/images/guitars/750/PR40-large.jpg",
+    "thumb_small": "/images/microphones/15.webp",
+    "thumb_medium": "/images/microphones/15.webp",
+    "image": "/images/microphones/15.webp",
     "category": "microphones"
   },
   {
@@ -1058,9 +1058,9 @@
     "long_description": "Cardioid pattern with warm, detailed sound. Gold-sputtered 1inch diaphragm and low-noise circuitry for professional recordings.",
     "availability": "available",
     "score": 4.3,
-    "thumb_small": "/images/guitars/750/MK4-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/MK4-large.jpg?width=400",
-    "image": "/images/guitars/750/MK4-large.jpg",
+    "thumb_small": "/images/microphones/16.webp",
+    "thumb_medium": "/images/microphones/16.webp",
+    "image": "/images/microphones/16.webp",
     "category": "microphones"
   },
   {
@@ -1072,9 +1072,9 @@
     "long_description": "Three selectable polar patterns (cardioid, omnidirectional, figure-8). Handcrafted in USA with dual large-diaphragm capsules.",
     "availability": "available",
     "score": 4.6,
-    "thumb_small": "/images/guitars/750/AT4050-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/AT4050-large.jpg?width=400",
-    "image": "/images/guitars/750/AT4050-large.jpg",
+    "thumb_small": "/images/microphones/17.webp",
+    "thumb_medium": "/images/microphones/17.webp",
+    "image": "/images/microphones/17.webp",
     "category": "microphones"
   },
   {
@@ -1086,9 +1086,9 @@
     "long_description": "Small-diaphragm condenser mics ideal for acoustic instruments, drum overheads, and stereo recording. Includes shock mounts and pouches.",
     "availability": "available",
     "score": 4.4,
-    "thumb_small": "/images/guitars/750/NT5MP-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/NT5MP-large.jpg?width=400",
-    "image": "/images/guitars/750/NT5MP-large.jpg",
+    "thumb_small": "/images/microphones/18.webp",
+    "thumb_medium": "/images/microphones/18.webp",
+    "image": "/images/microphones/18.webp",
     "category": "microphones"
   },
   {
@@ -1100,9 +1100,9 @@
     "long_description": "True condenser design with transformerless electronics for transparent sound. Excellent for vocals and acoustic instruments.",
     "availability": "available",
     "score": 4.6,
-    "thumb_small": "/images/guitars/750/KSM32-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/KSM32-large.jpg?width=400",
-    "image": "/images/guitars/750/KSM32-large.jpg",
+    "thumb_small": "/images/microphones/19.webp",
+    "thumb_medium": "/images/microphones/19.webp",
+    "image": "/images/microphones/19.webp",
     "category": "microphones"
   },
   {
@@ -1114,9 +1114,9 @@
     "long_description": "Gold-sputtered 1 diaphragm with cardioid pattern. Includes shock mount and carrying case. Surprisingly good quality for the price.",
     "availability": "available",
     "score": 4.0,
-    "thumb_small": "/images/guitars/750/V67G-large.jpg?width=220",
-    "thumb_medium": "/images/guitars/750/V67G-large.jpg?width=400",
-    "image": "/images/guitars/750/V67G-large.jpg",
+    "thumb_small": "/images/microphones/20.webp",
+    "thumb_medium": "/images/microphones/20.webp",
+    "image": "/images/microphones/20.webp",
     "category": "microphones"
   }
 ]
