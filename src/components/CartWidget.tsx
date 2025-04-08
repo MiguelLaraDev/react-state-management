@@ -5,16 +5,21 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { useCartStore, type CartStoreItem } from "../stores/cart.store";
+import ButtonClose from "./ui-toolkit/ButtonClose";
 
 const CartWidgetItem = ({ item, onRemove }: { item: CartStoreItem; onRemove: () => void }) => {
-  const { id, name, price, quantity } = item;
+  const { id, name, price, quantity, image } = item;
 
   return (
     <div key={id} className='w-full flex flex-row items-center gap-4'>
-      <img src='/images/img-example.webp' className='w-6 h-6' />
-      <p className='flex-grow flex-1'>{name}</p>
+      <img src={image} className='w-8 h-8 md:w-12 md:h-12' />
+
+      <p className='text-sm flex-grow flex-1 leading-tight md:text-base'>{name}</p>
+
       <p className='font-semibold'>{price} €</p>
+
       <p className='rounded-full px-2 py-0 bg-green-100 text-sm'>{quantity}</p>
+
       <button
         className={classNames(
           "w-4 h-4 p-3 flex items-center justify-center",
@@ -54,25 +59,16 @@ const CartWidget = () => {
         createPortal(
           <div
             className={classNames(
-              "fixed top-10 right-6 z-50",
-              "w-fit min-w-64 p-4 border border-neutral-200 bg-white",
-              "flex flex-col gap-6 shadow-md rounded-xl"
+              "fixed top-12 right-2 z-50",
+              "w-[85vw] min-w-64 p-4 border border-neutral-200 bg-white",
+              "flex flex-col gap-6 shadow-2xl rounded-b rounded-b-lg",
+              "md:top-10 md:right-6 md:rounded-xl md:w-fit md:shadow-md"
             )}
           >
             <div className='flex flex-row items-center justify-between'>
               <h2 className='font-semibold text-xl'>Your shopping cart</h2>
 
-              <button
-                className={classNames(
-                  "w-6 h-6 rounded-full ml-auto",
-                  "relative -top-2 -right-2",
-                  "flex items-center justify-center",
-                  "hover:bg-neutral-200 cursor-pointer"
-                )}
-                onClick={() => setExpanded(false)}
-              >
-                <FontAwesomeIcon icon={faRemove} className='text-lg text-neutral-400' />
-              </button>
+              <ButtonClose onClick={() => setExpanded(false)} />
             </div>
 
             {count > 0 && (

@@ -23,7 +23,12 @@ const Layout = () => {
         </h1>
 
         <div className='w-full h-full flex flex-row gap-4'>
-          <div className='absolute top-0 left-0 right-0 bottom-0 md:relative md:w-1/4'>
+          <div
+            className={classNames(
+              "absolute top-0 left-0 right-0 bottom-0 z-50 pointer-events-none",
+              "md:relative md:w-1/4"
+            )}
+          >
             <Filter />
           </div>
 

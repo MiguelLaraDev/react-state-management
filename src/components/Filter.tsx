@@ -6,9 +6,11 @@ import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
+import { useUiStore } from "../stores/ui.store";
 import Checkbox from "./Checkbox";
 import FiltersLoading from "./filters/FiltersLoading";
 import Score from "./Score";
+import ButtonClose from "./ui-toolkit/ButtonClose";
 
 const Filter = () => {
   useFixedPositionOnScroll("filter", 70, 10);
@@ -20,6 +22,7 @@ const Filter = () => {
   const filters = useMemo(() => result.filters, [result.filters]);
 
   const store = useUserSelectionStore();
+  const { filterIsOpen, toggleFilter } = useUiStore();
 
   const onFilterItemSelected = (filterType: Filter, optionId: string) => {
     store.toggleOption(filterType, optionId);
@@ -30,11 +33,22 @@ const Filter = () => {
       id='filter'
       className={classNames(
         "w-full h-full flex flex-col gap-8 z-50 p-4 bg-white",
+        "relative -left-[100vw]",
+        "pointer-events-auto",
         "md:z-1 md:bg-transparent md:p-0",
-        "hidden" //
+
+        "transition-transform duration-300 ease-in-out",
+        {
+          "translate-x-0": !filterIsOpen,
+          "translate-x-full": filterIsOpen,
+        }
       )}
     >
-      <div className='visible ml-auto md:hidden'>CLOSE</div>
+      <div className='flex flex-row items-center justify-between visible md:hidden'>
+        <h2 className='font-semibold text-xl'>Filters</h2>
+
+        <ButtonClose onClick={toggleFilter} />
+      </div>
 
       {error && <div>Error: {error.message}</div>}
 
