@@ -9,8 +9,9 @@ const Header = () => {
   return (
     <header
       className={classNames(
-        "fixed w-full h-12 py-2 px-6 z-50 bg-white shadow",
-        "flex flex-row items-center justify-between"
+        "fixed w-full h-12 py-2 px-6 z-0 bg-white shadow",
+        "flex flex-row items-center justify-between",
+        "md:z-50"
       )}
     >
       <button>

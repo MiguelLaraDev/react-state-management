@@ -6,8 +6,8 @@ import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
 import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
-import FiltersLoading from "./filters/FiltersLoading";
 import Checkbox from "./Checkbox";
+import FiltersLoading from "./filters/FiltersLoading";
 import Score from "./Score";
 
 const Filter = () => {
@@ -26,7 +26,16 @@ const Filter = () => {
   };
 
   return (
-    <div id='filter' className={classNames("w-full h-full flex flex-col gap-8")}>
+    <div
+      id='filter'
+      className={classNames(
+        "w-full h-full flex flex-col gap-8 z-50 p-4 bg-white",
+        "md:z-1 md:bg-transparent md:p-0",
+        "hidden" //
+      )}
+    >
+      <div className='visible ml-auto md:hidden'>CLOSE</div>
+
       {error && <div>Error: {error.message}</div>}
 
       {status === "pending" && <FiltersLoading />}

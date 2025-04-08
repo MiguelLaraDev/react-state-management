@@ -13,18 +13,16 @@ Add some cool animations.
 
 Filters: Stars and 500+ doesn't work.
 
-If a click a instrument filter (for example guitar) 
-    The following filters should be updated.
-    For example: 
-        I click guitar, 
-        the prices filters should display only the price ranges of guitars.
-
 Recycle list items.
-
-Download images.
 
 Instrument page: 
     Add details page.
     Add breadscrumb.
 
 Add tests.
+
+If a click a instrument filter (for example guitar) 
+    The following filters should be updated.
+    For example: 
+        I click guitar, 
+        the prices filters should display only the price ranges of guitars.

@@ -13,7 +13,7 @@ const Score = ({ score }: ScoreProps) => {
       {Array.from({ length: 5 }).map((_, i) => {
         const icon = i <= score ? faStar : faStarOutline;
 
-        return <FontAwesomeIcon key={`score-${i}`} icon={icon} />;
+        return <FontAwesomeIcon key={`score-${i}`} icon={icon} className='text-xs md:text-md' />;
       })}
     </div>
   );
