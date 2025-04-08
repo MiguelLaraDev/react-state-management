@@ -19,14 +19,13 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
 });
 
 const InstrumentsList = () => {
-  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
+  const { instruments, total, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
   const { locale } = useLocalizationStore();
 
   const title = (
     <span>
       {locale["instruments-page-title"] || "Instruments"}
-      {/* TODO: Add the number of instruments near the title: */}
-      <span className='text-lg text-neutral-500 font-semibold ml-2'>(NNN)</span>
+      <span className='text-2xl text-neutral-500 font-semibold ml-4'>{total}</span>
     </span>
   );
 

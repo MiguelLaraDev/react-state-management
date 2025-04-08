@@ -45,6 +45,7 @@ const useInstrumentFetch = () => {
     instruments,
     isFetchingNextPage,
     status,
+    total: data?.pages?.[0].totalItems,
     ref,
   };
 };
