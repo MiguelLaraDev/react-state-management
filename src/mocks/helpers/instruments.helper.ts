@@ -1,5 +1,8 @@
+import type { DefaultBodyType, StrictRequest } from "msw";
+import type { Filter } from "../../interfaces/filters.types";
 import type { Instrument, InstrumentFilterOptions } from "../../interfaces/instruments.types";
-import type { InstrumentApiResponse } from "../../interfaces/shared.types";
+import type { InstrumentApiResponse, SortDirection } from "../../interfaces/shared.types";
+import type { SortBy } from "../../stores/filters.store";
 
 export const selectByField = <FieldName extends keyof Instrument>(
   instruments: Instrument[],
@@ -18,6 +21,28 @@ const priceChecker = (instrumentPrice: number, priceRanges: string[]) => {
     const [min, max] = range.replace("+", "-500").split("-").map(Number);
     return instrumentPrice >= min && instrumentPrice <= max;
   });
+};
+
+export const processFilters = (request: StrictRequest<DefaultBodyType>) => {
+  const url = new URL(request.url);
+  const params = Object.fromEntries(url.searchParams.entries());
+
+  const paginationAndSortingKeys = new Set(["page", "sort_by", "sort_direction"]);
+
+  const filters: Record<string, string | string[] | SortBy> = {};
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value === "" || paginationAndSortingKeys.has(key)) continue;
+
+    filters[key] = value.split("|");
+  }
+
+  filters.sortBy = {
+    field: (params?.sort_by ?? "name") as Filter,
+    direction: (params?.sort_direction ?? "asc") as SortDirection,
+  };
+
+  return filters;
 };
 
 export const getFilteredInstruments = (

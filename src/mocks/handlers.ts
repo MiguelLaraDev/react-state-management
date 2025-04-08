@@ -4,16 +4,14 @@ import type { Instrument, InstrumentFilterOptions } from "../interfaces/instrume
 import db from "./data/database.json";
 import locale from "./data/localization.json";
 import { getFilters } from "./helpers/filters.helper";
-import { getFilteredInstruments } from "./helpers/instruments.helper";
+import { getFilteredInstruments, processFilters } from "./helpers/instruments.helper";
 
 export const handlers = [
   http.get("/api/instruments", async ({ request }) => {
-    const url = new URL(request.url);
-    const params = Object.fromEntries(url.searchParams.entries());
+    const filters = processFilters(request);
 
-    const filters = Object.entries(params)
-      .filter(([key, value]) => key !== "page" && value !== "")
-      .reduce((acc, [key, value]) => ({ ...acc, [key]: value.split("|") }), {});
+    const url = new URL(request.url);
+    const params = Object.fromEntries(url.searchParams.entries()); // TODO: Improve this by moving inside processFilters...
 
     const options: InstrumentFilterOptions = {
       ...filters,

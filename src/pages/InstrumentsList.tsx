@@ -6,7 +6,6 @@ import Layout from "../components/Layout";
 import SortingBox from "../components/SortingBox";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
-import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
@@ -20,10 +19,7 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
 });
 
 const InstrumentsList = () => {
-  const options = useUserSelectionStore((state) => state.options);
-
-  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch(options);
-
+  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
   const { locale } = useLocalizationStore();
 
   const title = (

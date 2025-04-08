@@ -2,18 +2,9 @@ import { useInfiniteQuery, type QueryFunctionContext } from "@tanstack/react-que
 import { useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 
-import type { Filter } from "../interfaces/filters.types";
 import type { Instrument } from "../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../interfaces/shared.types";
-
-type InjectedFilters = Record<Filter, string[]>;
-
-const parseFilters = (filters: InjectedFilters) => {
-  return Object.entries(filters).reduce(
-    (acc, [key, value]) => `${acc}&${key}=${value.join("|")}`,
-    ""
-  );
-};
+import { useUserSelectionStore } from "../stores/filters.store";
 
 const fetchItems = async (context: QueryFunctionContext): Promise<InstrumentApiResponse> => {
   const { pageParam, queryKey } = context;
@@ -26,9 +17,11 @@ const fetchItems = async (context: QueryFunctionContext): Promise<InstrumentApiR
   return response.json();
 };
 
-const useInstrumentFetch = (filters: InjectedFilters) => {
+const useInstrumentFetch = () => {
   const { ref, inView } = useInView();
-  const urlParams = useMemo(() => parseFilters(filters), [filters]);
+
+  const { sortBy, options, getParsedFilters } = useUserSelectionStore();
+  const urlParams = useMemo(() => getParsedFilters(), [options, sortBy]);
 
   const { data, error, status, isFetchingNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: ["instruments", urlParams],

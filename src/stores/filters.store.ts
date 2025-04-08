@@ -2,8 +2,8 @@ import { create } from "zustand";
 import type { Filter } from "../interfaces/filters.types";
 import type { SortDirection } from "../interfaces/shared.types";
 
-type SortBy = {
-  field: Filter;
+export type SortBy = {
+  field: Filter | "name";
   direction: SortDirection;
 };
 
@@ -11,7 +11,8 @@ type UserSelectionStore = {
   options: Record<Filter, string[]>;
   sortBy: SortBy;
   toggleOption: (type: Filter, option: string) => void;
-  updateSortBy: (sortBy: SortBy) => void;
+  updateSortBy: (newSortBy: SortBy) => void;
+  getParsedFilters: () => string;
 };
 
 const defaultOptions = {
@@ -26,7 +27,7 @@ const defaultSort: SortBy = {
   direction: "asc",
 };
 
-export const useUserSelectionStore = create<UserSelectionStore>((set) => ({
+export const useUserSelectionStore = create<UserSelectionStore>((set, get) => ({
   options: defaultOptions,
   sortBy: defaultSort,
   toggleOption: (type, option) => {
@@ -46,9 +47,20 @@ export const useUserSelectionStore = create<UserSelectionStore>((set) => ({
       };
     });
   },
-  updateSortBy: (sortBy) => {
+  updateSortBy: (newSortBy) => {
     set(() => {
-      return { sortBy };
+      return { sortBy: newSortBy };
     });
+  },
+  getParsedFilters: () => {
+    const optionsStr = Object.entries(get().options).reduce(
+      (acc, [key, value]) => `${acc}&${key}=${value.join("|")}`,
+      ""
+    );
+
+    const sortBy = get().sortBy;
+    const sortByStr = `sort_by=${sortBy.field}&sort_direction=${sortBy.direction}`;
+
+    return `${optionsStr}&${sortByStr}`;
   },
 }));

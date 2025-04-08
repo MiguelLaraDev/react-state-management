@@ -1,9 +1,5 @@
 TODO:
 
-SortBy: 
-    Listen when change and refetch instruments.
-    The items list should be pulled from the api.
-
 Show the total number of instruments.
 
 Check filtering by ratings and availability.

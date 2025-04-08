@@ -3,21 +3,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 
-const items = [
+import type { Filter } from "../interfaces/filters.types";
+import type { SortDirection } from "../interfaces/shared.types";
+import { useUserSelectionStore } from "../stores/filters.store";
+
+type SortingBoxItem = {
+  id: string;
+  sort: {
+    field: Filter | "name";
+    direction: SortDirection;
+  };
+  label: string;
+};
+
+const items: SortingBoxItem[] = [
   {
     id: "price-asc",
+    sort: { field: "price", direction: "asc" },
     label: "Price: low to high",
   },
   {
     id: "price-desc",
+    sort: { field: "price", direction: "desc" },
     label: "Price: high to low",
   },
   {
     id: "alphabet-asc",
+    sort: { field: "name", direction: "asc" },
     label: "Alphabet (A-Z)",
   },
   {
     id: "alphabet-desc",
+    sort: { field: "name", direction: "desc" },
     label: "Alphabet (Z-A)",
   },
 ];
@@ -26,6 +43,7 @@ const SortingBox = () => {
   const [expanded, setExpanded] = useState(false);
   const [selected, setSelected] = useState("price-asc");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { updateSortBy } = useUserSelectionStore();
 
   const toggleDropdown = () => {
     // TODO: Trigger animation here?
@@ -33,9 +51,10 @@ const SortingBox = () => {
     setExpanded((v) => !v);
   };
 
-  const onItemsSelected = (id: string) => {
-    setSelected(id);
+  const onItemsSelected = (data: SortingBoxItem) => {
+    setSelected(data.id);
     setExpanded(false);
+    updateSortBy(data.sort);
   };
 
   useEffect(() => {
@@ -84,7 +103,7 @@ const SortingBox = () => {
                   "hover:bg-violet-100 cursor-pointer font-thin",
                   { "text-violet-700": selected === item.id }
                 )}
-                onClick={() => onItemsSelected(item.id)}
+                onClick={() => onItemsSelected(item)}
               >
                 <span className='w-4 h-4 flex flex-row items-center'>
                   {selected === item.id && <FontAwesomeIcon icon={faCheck} />}
