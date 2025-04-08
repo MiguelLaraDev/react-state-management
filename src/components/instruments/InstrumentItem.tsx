@@ -29,7 +29,8 @@ const InstrumentItem = ({
     <div className='w-full h-[200px] flex flex-row gap-0 p-0 rounded-xl border border-neutral-200 overflow-hidden'>
       <div className='w-1/4 min-w-[142px] h-full bg-white py-6'>
         <Link to={slug}>
-          <img src='/images/img-example.webp' className='w-auto h-full mx-auto' />
+          {/* <img src='/images/img-example.webp' className='w-auto h-full mx-auto' /> */}
+          <img src={image} className='w-auto h-full mx-auto' />
         </Link>
       </div>
 
