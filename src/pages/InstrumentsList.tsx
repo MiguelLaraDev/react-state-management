@@ -2,7 +2,6 @@ import { memo } from "react";
 
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import InstrumentLoading from "../components/instruments/InstrumentLoading";
-import Layout from "../components/Layout";
 import SortingBox from "../components/SortingBox";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
@@ -29,24 +28,24 @@ const InstrumentsList = () => {
     </span>
   );
 
+  console.log(title);
+
   return (
-    <Layout title={title}>
-      <div className='w-full h-fit flex flex-col gap-4'>
-        {status === "error" && <div>Error: {error?.message}</div>}
+    <div className='w-full h-fit flex flex-col gap-4'>
+      {status === "error" && <div>Error: {error?.message}</div>}
 
-        {status === "pending" && <InstrumentLoading />}
+      {status === "pending" && <InstrumentLoading />}
 
-        {status === "success" && (
-          <>
-            <SortingBox />
+      {status === "success" && (
+        <>
+          <SortingBox />
 
-            <List instruments={instruments || []} />
-          </>
-        )}
+          <List instruments={instruments || []} />
+        </>
+      )}
 
-        <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
-      </div>
-    </Layout>
+      <div ref={ref}>{isFetchingNextPage && "Loading..."}</div>
+    </div>
   );
 };
 

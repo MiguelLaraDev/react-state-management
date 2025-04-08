@@ -1,8 +1,17 @@
 TODO:
+------
 
-Show the total number of instruments.
+Set responsive.
 
-Check filtering by ratings and availability.
+Add links: Add prefetch.
+
+Find a way to make the title dynamic.
+
+Find a way to make details lazy.
+
+Add some cool animations.
+
+Filters: Stars and 500+ doesn't work.
 
 If a click a instrument filter (for example guitar) 
     The following filters should be updated.
@@ -14,17 +23,8 @@ Recycle list items.
 
 Download images.
 
-Add links:
-    Add dom.
-    Add prefetch.
-
 Instrument page: 
-    Add react router.
     Add details page.
     Add breadscrumb.
 
-Set responsive.
-
-Add some cool animations.
-
-Add testings.
+Add tests.

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { memo } from "react";
 
+import { Link } from "react-router-dom";
 import type { Instrument } from "../../interfaces/instruments.types";
 import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
 import { availabilityConfig } from "../../utils/configs";
@@ -27,22 +28,26 @@ const InstrumentItem = ({
   return (
     <div className='w-full h-[200px] flex flex-row gap-0 p-0 rounded-xl border border-neutral-200 overflow-hidden'>
       <div className='w-1/4 min-w-[142px] h-full bg-white py-6'>
-        <img src='/images/img-example.webp' className='w-auto h-full mx-auto' />
+        <Link to={slug}>
+          <img src='/images/img-example.webp' className='w-auto h-full mx-auto' />
+        </Link>
       </div>
 
-      <div className='flex flex-col gap-2 flex-grow px-8 py-4'>
-        <h2 className='font-semibold text-2xl'>{name}</h2>
+      <Link to={slug} className='flex-grow hover:[&_h2]:text-violet-700'>
+        <div className='w-full h-full flex flex-col gap-2 px-8 py-4'>
+          <h2 className='font-semibold text-2xl'>{name}</h2>
 
-        <Score score={score} />
+          <Score score={score} />
 
-        <ul>
-          <li className='text-neutral-600'>{description}</li>
-        </ul>
+          <ul>
+            <li className='text-neutral-600'>{description}</li>
+          </ul>
 
-        <p className={classNames("mt-auto", availabilityConfig[availability].color)}>
-          {availabilityConfig[availability].label}
-        </p>
-      </div>
+          <p className={classNames("mt-auto", availabilityConfig[availability].color)}>
+            {availabilityConfig[availability].label}
+          </p>
+        </div>
+      </Link>
 
       <div className='w-1/4 flex flex-col items-end justify-between p-8'>
         <p className='font-bold text-3xl tracking-tighter whitespace-nowrap'>{price} €</p>

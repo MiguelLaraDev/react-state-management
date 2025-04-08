@@ -18,11 +18,13 @@
     "@tailwindcss/postcss": "^4.0.17",
     "@tailwindcss/vite": "^4.0.17",
     "@tanstack/react-query": "^5.71.1",
+    "@types/react-router-dom": "^5.3.3",
     "classnames": "^2.5.1",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-intersection-observer": "^9.16.0",
+    "react-router-dom": "^7.5.0",
     "tailwindcss": "^4.0.17",
     "zustand": "^5.0.3"
   },

@@ -1,5 +1,5 @@
 const InstrumnetDetail = () => {
-  return <div> Add your instrument detail content here</div>;
+  return <div>TODO: Add instrument detail content here</div>;
 };
 
 export default InstrumnetDetail;
