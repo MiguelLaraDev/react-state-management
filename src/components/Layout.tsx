@@ -3,10 +3,9 @@ import { Outlet } from "react-router-dom";
 import classNames from "classnames";
 import Filter from "./Filter";
 import Header from "./Header";
+import TitleOutlet from "./TitleOutlet";
 
 const Layout = () => {
-  const title = "TODO: Use a second outlet for the title";
-
   return (
     <div className='relative w-full flex flex-col overflow-hidden'>
       <Header />
@@ -17,10 +16,7 @@ const Layout = () => {
           "md:gap-12 md:p-8"
         )}
       >
-        <h1 className='font-bold text-2xl md:text-5xl'>
-          {title}
-          {/* <Outlet /> */}
-        </h1>
+        <TitleOutlet />
 
         <div className='w-full h-full flex flex-row gap-4'>
           <div

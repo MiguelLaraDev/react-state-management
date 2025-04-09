@@ -7,7 +7,6 @@ import SortingBox from "../components/SortingBox";
 import Button from "../components/ui-toolkit/Button";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
-import { useLocalizationStore } from "../stores/locale.store";
 import { useUiStore } from "../stores/ui.store";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
@@ -21,18 +20,8 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
 });
 
 const InstrumentsList = () => {
-  const { instruments, total, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
-  const { locale } = useLocalizationStore();
+  const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
   const { toggleFilter } = useUiStore();
-
-  const title = (
-    <span>
-      {locale["instruments-page-title"] || "Instruments"}
-      <span className='text-2xl text-neutral-500 font-semibold ml-4'>{total}</span>
-    </span>
-  );
-
-  console.log("title", title === undefined);
 
   return (
     <div className='w-full h-fit flex flex-col gap-4'>
