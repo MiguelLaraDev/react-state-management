@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import useLocalizationFetch from "./hooks/useLocalizationFetch";
-import InstrumentDetail from "./pages/InstrumentDetail";
 import InstrumentsList from "./pages/InstrumentsList";
 
 const App = () => {
@@ -18,9 +17,6 @@ const App = () => {
         {
           index: true,
           element: <InstrumentsList />,
-          // handle: {
-          //   title: <h1>TODO: Make it dynamic...</h1>,
-          // },
         },
         {
           path: "instruments",
@@ -31,8 +27,10 @@ const App = () => {
             },
             {
               path: ":slug",
-              element: <InstrumentDetail />,
-              // lazy: () => import("./pages/InstrumentDetail"),
+              lazy: () =>
+                import("./pages/InstrumentDetail").then((module) => ({
+                  element: <module.default />,
+                })),
             },
           ],
         },
