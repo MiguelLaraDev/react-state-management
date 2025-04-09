@@ -1,11 +1,10 @@
 import { memo } from "react";
 
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import InstrumentLoading from "../components/instruments/InstrumentLoading";
 import SortingBox from "../components/SortingBox";
+import Button from "../components/ui-toolkit/Button";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
 import type { Instrument } from "../interfaces/instruments.types";
 import { useLocalizationStore } from "../stores/locale.store";
@@ -44,17 +43,12 @@ const InstrumentsList = () => {
       {status === "success" && (
         <>
           <div className='flex flex-row items-center'>
-            {/* TODO: Move button to a separate component: */}
-            <button
-              className={classNames(
-                "flex flex-row items-center gap-2 bg-black text-white text-sm px-4 py-1",
-                "rounded-4xl md:hidden md:pointer-events-none"
-              )}
+            <Button
+              className='md:hidden md:pointer-events-none'
+              label='Filter'
+              icon={faSliders}
               onClick={toggleFilter}
-            >
-              <FontAwesomeIcon icon={faSliders} />
-              <p>Filter</p>
-            </button>
+            />
 
             <SortingBox />
           </div>

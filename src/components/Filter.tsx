@@ -7,10 +7,10 @@ import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
 import { useUiStore } from "../stores/ui.store";
-import Checkbox from "./Checkbox";
 import FiltersLoading from "./filters/FiltersLoading";
 import Score from "./Score";
 import ButtonClose from "./ui-toolkit/ButtonClose";
+import Checkbox from "./ui-toolkit/Checkbox";
 
 const Filter = () => {
   useFixedPositionOnScroll("filter", 70, 10);

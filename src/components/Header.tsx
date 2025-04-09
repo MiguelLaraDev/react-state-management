@@ -1,5 +1,3 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
 import logo from "@assets/logo.svg";
@@ -14,9 +12,7 @@ const Header = () => {
         "md:z-50"
       )}
     >
-      <button>
-        <FontAwesomeIcon icon={faBars} />
-      </button>
+      <div />
 
       <div>
         <img src={logo} alt='Logo' className='h-8' />
