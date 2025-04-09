@@ -76,7 +76,7 @@ const SortingBox = () => {
       <div ref={dropdownRef} id='sorting-dropdown' className='relative flex flex-col gap-4'>
         <button
           className={classNames(
-            "w-fit h-8 flex flex-row items-center gap-2 px-4",
+            "w-fit h-8 flex flex-row items-center gap-2 md:px-4",
             "font-semibold",
             "hover:text-violet-700 cursor-pointer"
           )}

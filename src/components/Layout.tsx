@@ -1,9 +1,9 @@
+import classNames from "classnames";
 import { Outlet } from "react-router-dom";
 
-import classNames from "classnames";
 import Filter from "./Filter";
 import Header from "./Header";
-import TitleOutlet from "./TitleOutlet";
+import MainTitle from "./MainTitle";
 
 const Layout = () => {
   return (
@@ -16,7 +16,8 @@ const Layout = () => {
           "md:gap-12 md:p-8"
         )}
       >
-        <TitleOutlet />
+        {/* <TitleOutlet /> */}
+        <MainTitle />
 
         <div className='w-full h-full flex flex-row gap-4'>
           <div

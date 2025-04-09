@@ -18,9 +18,9 @@ const App = () => {
         {
           index: true,
           element: <InstrumentsList />,
-          handle: {
-            title: <h1>TODO: Make it dynamic...</h1>,
-          },
+          // handle: {
+          //   title: <h1>TODO: Make it dynamic...</h1>,
+          // },
         },
         {
           path: "instruments",
