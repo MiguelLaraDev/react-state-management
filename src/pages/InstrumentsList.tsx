@@ -1,6 +1,6 @@
+import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { memo } from "react";
 
-import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import InstrumentItem from "../components/instruments/InstrumentItem";
 import InstrumentLoading from "../components/instruments/InstrumentLoading";
 import SortingBox from "../components/SortingBox";
@@ -32,7 +32,7 @@ const InstrumentsList = () => {
     </span>
   );
 
-  console.log(title);
+  console.log("title", title === undefined);
 
   return (
     <div className='w-full h-fit flex flex-col gap-4'>

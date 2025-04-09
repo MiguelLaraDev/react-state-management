@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 
-const useFixedPositionOnScroll = (id: string, offset: number, padding = 0) => {
+const useFixedPositionOnScroll = (id: string | null, offset: number, padding = 0) => {
   useEffect(() => {
+    if (!id) {
+      return;
+    }
+
     let lastScrollY = window.scrollY;
     let ticking = false;
 
@@ -35,6 +39,6 @@ const useFixedPositionOnScroll = (id: string, offset: number, padding = 0) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [offset, padding]);
+  }, [id, offset, padding]);
 };
 export default useFixedPositionOnScroll;

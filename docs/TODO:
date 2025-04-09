@@ -1,8 +1,6 @@
 TODO:
 ------
 
-Set responsive.
-
 Add links: Add prefetch.
 
 Find a way to make the title dynamic.
@@ -28,3 +26,6 @@ If a click a instrument filter (for example guitar)
     For example: 
         I click guitar, 
         the prices filters should display only the price ranges of guitars.
+
+
+Fix Filter desktop padding when is fixed.

@@ -1,8 +1,10 @@
 import classNames from "classnames";
-
 import { useMemo } from "react";
+import { isMobile } from "react-device-detect";
+
 import useFiltersFetch from "../hooks/useFiltersFetch";
 import useFixedPositionOnScroll from "../hooks/useFixedPositionOnScroll";
+import useScrollDisabled from "../hooks/useScrollDisable";
 import type { Filter } from "../interfaces/filters.types";
 import { useUserSelectionStore } from "../stores/filters.store";
 import { useLocalizationStore } from "../stores/locale.store";
@@ -13,8 +15,6 @@ import ButtonClose from "./ui-toolkit/ButtonClose";
 import Checkbox from "./ui-toolkit/Checkbox";
 
 const Filter = () => {
-  useFixedPositionOnScroll("filter", 70, 10);
-
   const { locale } = useLocalizationStore();
 
   const result = useFiltersFetch();
@@ -24,6 +24,9 @@ const Filter = () => {
   const store = useUserSelectionStore();
   const { filterIsOpen, toggleFilter } = useUiStore();
 
+  useFixedPositionOnScroll(isMobile ? null : "filter", 70, 10);
+  useScrollDisabled(isMobile && filterIsOpen);
+
   const onFilterItemSelected = (filterType: Filter, optionId: string) => {
     store.toggleOption(filterType, optionId);
   };
@@ -32,16 +35,16 @@ const Filter = () => {
     <div
       id='filter'
       className={classNames(
-        "w-full h-full flex flex-col gap-8 z-50 p-4 bg-white",
-        "relative -left-[100vw]",
+        "w-full h-fit flex flex-col gap-8 z-50 p-4 bg-white",
+        "fixed -left-[100vw]",
         "pointer-events-auto",
-        "md:z-1 md:bg-transparent md:p-0",
-
         "transition-transform duration-300 ease-in-out",
-        {
+        isMobile && {
           "translate-x-0": !filterIsOpen,
           "translate-x-full": filterIsOpen,
-        }
+        },
+        "md:relative md:left-0",
+        "md:z-1 md:bg-transparent md:p-0"
       )}
     >
       <div className='flex flex-row items-center justify-between visible md:hidden'>
