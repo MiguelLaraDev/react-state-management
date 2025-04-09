@@ -4,7 +4,11 @@ import type { Instrument, InstrumentFilterOptions } from "../interfaces/instrume
 import db from "./data/database.json";
 import locale from "./data/localization.json";
 import { getFilters } from "./helpers/filters.helper";
-import { getFilteredInstruments, processFilters } from "./helpers/instruments.helper";
+import {
+  getFilteredInstruments,
+  getInstrumentById,
+  processFilters,
+} from "./helpers/instruments.helper";
 
 export const handlers = [
   http.get("/api/instruments", async ({ request }) => {
@@ -21,9 +25,19 @@ export const handlers = [
       },
     };
 
+    const result = getFilteredInstruments(db as Instrument[], options);
+
     await delay(0);
 
-    const result = getFilteredInstruments(db as Instrument[], options);
+    return HttpResponse.json(result);
+  }),
+
+  http.get("/api/instruments/:id", async ({ params }) => {
+    const id = Number(params.id);
+    const result = getInstrumentById(db as Instrument[], id);
+
+    await delay(0);
+
     return HttpResponse.json(result);
   }),
 

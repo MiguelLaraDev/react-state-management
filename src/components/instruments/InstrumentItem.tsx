@@ -2,8 +2,9 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { memo } from "react";
-
 import { Link } from "react-router-dom";
+
+import useInstrumentPrefetch from "../../hooks/useInstrumentPrefetch";
 import type { Instrument } from "../../interfaces/instruments.types";
 import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
 import { availabilityConfig } from "../../utils/configs";
@@ -20,6 +21,7 @@ const InstrumentItem = ({
   slug,
 }: Instrument) => {
   const { add } = useCartStore();
+  const { prefetchInstrument } = useInstrumentPrefetch();
 
   const onCartButtonClicked = () => {
     add({ id, image, name, price, slug } as CartStoreItem);
@@ -38,12 +40,16 @@ const InstrumentItem = ({
           "md:w-1/4 md:min-w-[142px] md:h-full"
         )}
       >
-        <Link to={slug}>
+        <Link to={slug} onMouseEnter={() => prefetchInstrument(id)}>
           <img src={image} className={"w-auto h-full mx-auto"} />
         </Link>
       </div>
 
-      <Link to={slug} className='flex-grow hover:[&_h2]:text-violet-700'>
+      <Link
+        to={slug}
+        className='flex-grow hover:[&_h2]:text-violet-700'
+        onMouseEnter={() => prefetchInstrument(id)}
+      >
         <div
           className={classNames("w-full h-full flex flex-col gap-2 px-0 py-2", "md:px-8 md:py-4")}
         >

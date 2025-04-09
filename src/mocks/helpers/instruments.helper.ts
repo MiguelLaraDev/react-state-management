@@ -110,3 +110,7 @@ export const getFilteredInstruments = (
     totalPages,
   };
 };
+
+export const getInstrumentById = (instruments: Instrument[], id: number) => {
+  return instruments.filter((instrument) => instrument.id === id);
+};

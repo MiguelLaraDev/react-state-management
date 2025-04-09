@@ -1,7 +1,9 @@
 TODO:
 ------
 
-Add links: Add prefetch.
+Instrument page: 
+    Add details page.
+    Add breadscrumb.
 
 Add some cool animations.
 
@@ -9,21 +11,18 @@ Filters: Stars and 500+ doesn't work.
 
 Recycle list items.
 
-Instrument page: 
-    Add details page.
-    Add breadscrumb.
-
 Add all the locales.
 
 Add tests.
+
+Fix Filter desktop padding when is position:fixed.
+
+Improve main title.
+
+-------
 
 If a click a instrument filter (for example guitar) 
     The following filters should be updated.
     For example: 
         I click guitar, 
         the prices filters should display only the price ranges of guitars.
-
-
-Fix Filter desktop padding when is fixed.
-
-Improve main title.
