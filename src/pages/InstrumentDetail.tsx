@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { isMobile } from "react-device-detect";
 import { Link, useParams } from "react-router-dom";
 
 import ImageGallery from "../components/ImageGallery";
@@ -32,6 +33,10 @@ const InstrumentDetail = () => {
     add({ id, image, name, price, slug } as CartStoreItem);
   };
 
+  const description = (
+    <p className='text-xl leading-snug tracking-normal text-neutral-700'>{long_description}</p>
+  );
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-[1fr_300px] gap-4'>
       <div id='instrument-details' className='flex flex-col gap-4'>
@@ -46,7 +51,7 @@ const InstrumentDetail = () => {
 
         <ImageGallery />
 
-        <p className='text-xl leading-snug tracking-normal text-neutral-700'>{long_description}</p>
+        {!isMobile && description}
       </div>
 
       <div id='buying-info' className='flex flex-col gap-2 md:gap-4 overflow-hidden'>
@@ -75,6 +80,8 @@ const InstrumentDetail = () => {
           <Button label='ADD TO BASKET' size='md' onClick={onCartButtonClicked} />
         </div>
       </div>
+
+      {isMobile && description}
     </div>
   );
 };
