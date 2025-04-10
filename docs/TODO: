@@ -7,6 +7,8 @@ Instrument page:
     Pull the data from cache or fetch it.
     Remove the filter box dinamically.
 
+Restore the padding between md and xl in Layout.
+
 Add some cool animations.
 
 Filters: Stars and 500+ doesn't work.
