@@ -1,28 +1,30 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useInstrumentFetch from "../hooks/useInstrumentFetch";
+import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 import { useLocalizationStore } from "../stores/locale.store";
 
 const MainTitle = () => {
   const { pathname } = useLocation();
   const { locale } = useLocalizationStore();
   const { total } = useInstrumentFetch();
+  const { slug } = useParams();
+  const { data } = useInstrumentPrefetch(slug);
 
-  const normalizedPathname = pathname.replace(/\/+$/, "");
+  const normalizedPathname = pathname.replace(/^\/|\/+$/g, "");
   let title = "";
   let detail = null;
 
   switch (true) {
-    case normalizedPathname === "/":
-    case normalizedPathname === "/instruments":
+    case normalizedPathname === "":
+    case normalizedPathname === "instruments":
       title = locale["instruments-page-title"];
       detail = (
         <span className='text-base text-neutral-500 font-semibold ml-4 md:text-2xl'>{total}</span>
       );
       break;
 
-    case /^\/instruments\/[^/]+$/.test(normalizedPathname):
-      const slug = normalizedPathname.split("/")[2];
-      title = `${slug.replace(/-/g, " ")} corresponding title`; // Dynamic title
+    case slug !== undefined:
+      title = data?.name || "Your instrument"; // TODO: Pull it from localization...
       break;
 
     default:
