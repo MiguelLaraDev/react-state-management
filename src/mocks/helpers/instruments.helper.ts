@@ -18,7 +18,7 @@ const priceChecker = (instrumentPrice: number, priceRanges: string[]) => {
   }
 
   return priceRanges.some((range) => {
-    const [min, max] = range.replace("+", "-500").split("-").map(Number);
+    const [min, max] = range.trim() === "500" ? [500, 100000] : range.split("-").map(Number);
     return instrumentPrice >= min && instrumentPrice <= max;
   });
 };
