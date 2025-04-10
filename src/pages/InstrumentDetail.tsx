@@ -14,7 +14,7 @@ const InstrumentDetail = () => {
   // When prefetch:
   //    Instead of caching the instrument by id, cache it by slug.
 
-  // When pull the deatils:
+  // When pull the details:
   //    In case of slug is present,
   //    inside a useffect exec getInstrument, by using the slug.
   //    return directly the data.
