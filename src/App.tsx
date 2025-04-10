@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import useLocalizationFetch from "./hooks/useLocalizationFetch";
-import InstrumentsList from "./pages/InstrumentsList";
+import Instruments from "./pages/Instruments";
 
 const App = () => {
   useLocalizationFetch();
@@ -16,14 +16,14 @@ const App = () => {
       children: [
         {
           index: true,
-          element: <InstrumentsList />,
+          element: <Instruments />,
         },
         {
           path: "instruments",
           children: [
             {
               index: true,
-              element: <InstrumentsList />,
+              element: <Instruments />,
             },
             {
               path: ":slug",

@@ -19,7 +19,7 @@ const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
   );
 });
 
-const InstrumentsList = () => {
+const Instruments = () => {
   const { instruments, error, isFetchingNextPage, status, ref } = useInstrumentFetch();
   const { toggleFilter } = useUiStore();
 
@@ -51,4 +51,4 @@ const InstrumentsList = () => {
   );
 };
 
-export default InstrumentsList;
+export default Instruments;
