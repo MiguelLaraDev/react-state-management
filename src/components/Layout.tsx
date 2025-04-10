@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Outlet } from "react-router-dom";
 
+import Breadcrumb from "./Breadcrumb";
 import Header from "./Header";
 import MainTitle from "./MainTitle";
 import FiltersWrapper from "./filters/FiltersWrapper";
@@ -17,7 +18,7 @@ const Layout = () => {
           "lg:px-20 2xl:px-0"
         )}
       >
-        {/* TODO: Add breascrumb here... */}
+        <Breadcrumb />
 
         <MainTitle />
 

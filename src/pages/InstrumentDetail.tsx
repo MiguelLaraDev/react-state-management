@@ -45,9 +45,7 @@ const InstrumentDetail = () => {
 
         <ImageGallery />
 
-        <p className='text-base leading-snug tracking-normal text-neutral-700'>
-          {long_description}
-        </p>
+        <p className='text-xl leading-snug tracking-normal text-neutral-700'>{long_description}</p>
       </div>
 
       <div id='buying-info' className='flex flex-col gap-2 md:gap-4 overflow-hidden'>
