@@ -16,7 +16,8 @@ const Layout = () => {
           "md:gap-12 md:p-8"
         )}
       >
-        {/* <TitleOutlet /> */}
+        {/* TODO: Add breascrumb here... */}
+
         <MainTitle />
 
         <div className='w-full h-full flex flex-row gap-4'>

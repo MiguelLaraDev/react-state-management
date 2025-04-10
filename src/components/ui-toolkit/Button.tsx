@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
 interface ButtonProps {
-  className: string;
-  icon: IconDefinition;
+  className?: string;
+  icon?: IconDefinition;
   label: string;
   onClick: () => void;
 }
 
-const Button = ({ className, icon, label, onClick }: ButtonProps) => {
+const Button = ({ className = "", icon, label, onClick }: ButtonProps) => {
   return (
     <button
       className={classNames(
@@ -20,7 +20,7 @@ const Button = ({ className, icon, label, onClick }: ButtonProps) => {
       )}
       onClick={onClick}
     >
-      <FontAwesomeIcon icon={icon} />
+      {icon && <FontAwesomeIcon icon={icon} />}
       <p>{label}</p>
     </button>
   );
