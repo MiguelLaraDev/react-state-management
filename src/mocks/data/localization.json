@@ -17,5 +17,12 @@
   "microphones": "Microphones",
   "price": "Price",
   "score": "Ratings",
-  "sold-out": "Our of stock"
+  "sold-out": "Out of stock",
+  "stock": {
+    "available": "Available",
+    "few-left": "Few left! Hurry up!",
+    "sold-out": "Sold out, soon to be back"
+  },
+  "shoping-cart": "Your shopping cart",
+  "shoping-cart-empty": "No items yet!"
 }

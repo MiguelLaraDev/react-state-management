@@ -1,6 +1,12 @@
 import classNames from "classnames";
 import type { Availability } from "../../interfaces/shared.types";
-import { availabilityConfig } from "../../utils/configs";
+import { useLocalizationStore } from "../../stores/locale.store";
+
+const colors = {
+  available: "text-green-600",
+  "few-left": "text-orange-600",
+  "sold-out": "text-red-600",
+};
 
 interface AvailabilityBadgeProps {
   status: Availability;
@@ -8,11 +14,11 @@ interface AvailabilityBadgeProps {
 }
 
 const AvailabilityBadge = ({ status, className }: AvailabilityBadgeProps) => {
-  return (
-    <p className={classNames("text-xs md:text-base", availabilityConfig[status].color, className)}>
-      {availabilityConfig[status].label}
-    </p>
-  );
+  const { locale } = useLocalizationStore();
+  const stock: Record<string, string> = locale.stock as Record<string, string>;
+  const title = stock[status] || "n/a";
+
+  return <p className={classNames("text-xs md:text-base", colors[status], className)}>{title}</p>;
 };
 
 export default AvailabilityBadge;

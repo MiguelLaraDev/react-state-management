@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { useCartStore, type CartStoreItem } from "../stores/cart.store";
+import { useLocalizationStore } from "../stores/locale.store";
 import ButtonClose from "./ui-toolkit/ButtonClose";
 
 const CartWidgetItem = ({ item, onRemove }: { item: CartStoreItem; onRemove: () => void }) => {
@@ -35,6 +36,7 @@ const CartWidgetItem = ({ item, onRemove }: { item: CartStoreItem; onRemove: () 
 };
 
 const CartWidget = () => {
+  const { locale } = useLocalizationStore();
   const { cart, remove, getCount, getTotalPrice } = useCartStore();
   const count = getCount();
   const totalPrice = getTotalPrice();
@@ -66,7 +68,7 @@ const CartWidget = () => {
             )}
           >
             <div className='flex flex-row items-center justify-between'>
-              <h2 className='font-semibold text-xl'>Your shopping cart</h2>
+              <h2 className='font-semibold text-xl'>{locale["shoping-cart"] as string}</h2>
 
               <ButtonClose onClick={() => setExpanded(false)} />
             </div>
@@ -83,7 +85,7 @@ const CartWidget = () => {
               </>
             )}
 
-            {count === 0 && <p>No items yet!</p>}
+            {count === 0 && <p>{locale?.["shoping-cart-empty"] as string}</p>}
           </div>,
           document.body
         )}

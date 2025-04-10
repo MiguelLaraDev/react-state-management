@@ -14,7 +14,7 @@ const fetchItems = async (): Promise<Record<string, string>> => {
 };
 
 const useLocalizationFetch = () => {
-  const { locale, setStrings } = useLocalizationStore();
+  const { locale, setValues } = useLocalizationStore();
 
   const { data } = useQuery({
     queryKey: ["locale"],
@@ -23,8 +23,8 @@ const useLocalizationFetch = () => {
   });
 
   useEffect(() => {
-    setStrings(data || {});
-  }, [data, setStrings]);
+    setValues(data || {});
+  }, [data]);
 };
 
 export default useLocalizationFetch;
