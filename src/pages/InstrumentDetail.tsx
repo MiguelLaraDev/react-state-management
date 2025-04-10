@@ -8,20 +8,9 @@ import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 
 const InstrumentDetail = () => {
   const { slug } = useParams();
-  const { data, getInstrument } = useInstrumentPrefetch();
+  const { data } = useInstrumentPrefetch(slug);
 
-  // TODO: Refector this logic:
-  // When prefetch:
-  //    Instead of caching the instrument by id, cache it by slug.
-
-  // When pull the details:
-  //    In case of slug is present,
-  //    inside a useffect exec getInstrument, by using the slug.
-  //    return directly the data.
-  // Don't export "getInstrument".
-  getInstrument(15);
-
-  console.log(data);
+  // TODO: Memoize as much as possible.
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>

@@ -111,6 +111,6 @@ export const getFilteredInstruments = (
   };
 };
 
-export const getInstrumentById = (instruments: Instrument[], id: number) => {
-  return instruments.filter((instrument) => instrument.id === id);
+export const getInstrumentBySlug = (instruments: Instrument[], slug: string) => {
+  return instruments.filter((instrument) => instrument.slug === slug);
 };

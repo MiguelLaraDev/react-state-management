@@ -22,9 +22,14 @@ const InstrumentItem = ({
 }: Instrument) => {
   const { add } = useCartStore();
   const { prefetchInstrument } = useInstrumentPrefetch();
+  const detailsURL = `/instruments/${slug}`;
 
   const onCartButtonClicked = () => {
     add({ id, image, name, price, slug } as CartStoreItem);
+  };
+
+  const prefetch = () => {
+    prefetchInstrument(slug);
   };
 
   return (
@@ -40,15 +45,15 @@ const InstrumentItem = ({
           "md:w-1/4 md:min-w-[142px] md:h-full"
         )}
       >
-        <Link to={slug} onMouseEnter={() => prefetchInstrument(id)}>
+        <Link to={detailsURL} onMouseEnter={prefetch}>
           <img src={image} className={"w-auto h-full mx-auto"} />
         </Link>
       </div>
 
       <Link
-        to={slug}
+        to={detailsURL}
         className='flex-grow hover:[&_h2]:text-violet-700'
-        onMouseEnter={() => prefetchInstrument(id)}
+        onMouseEnter={prefetch}
       >
         <div
           className={classNames("w-full h-full flex flex-col gap-2 px-0 py-2", "md:px-8 md:py-4")}

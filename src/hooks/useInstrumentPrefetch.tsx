@@ -1,50 +1,54 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Instrument } from "../interfaces/instruments.types";
 
-const fetchInstrumentById = async (id: number) => {
-  const response = await fetch(`/api/instruments/${id}`);
+const fetchInstrumentById = async (slug: string) => {
+  const response = await fetch(`/api/instruments/${slug}`);
 
   if (!response.ok) throw new Error("Network response was not ok");
 
   return response.json();
 };
 
-const useInstrumentPrefetch = () => {
+const useInstrumentPrefetch = (injectedSlug?: string) => {
   const queryClient = useQueryClient();
   const [data, setData] = useState<Instrument | null>(null);
 
-  const prefetchInstrument = async (instrumentId: number) => {
+  const prefetchInstrument = async (slug: string) => {
     await queryClient.prefetchQuery({
-      queryKey: ["instrument", instrumentId],
-      queryFn: () => fetchInstrumentById(instrumentId),
+      queryKey: ["instrument", slug],
+      queryFn: () => fetchInstrumentById(slug),
       staleTime: 5000,
     });
   };
 
-  const getInstrument = async (instrumentId: number) => {
-    // Check cache first
-    // const cachedData = queryClient.getQueryData(["instrument", instrumentId]);
-    // if (cachedData) {
-    //   return cachedData;
-    // }
+  const getInstrument = async (slug: string) => {
+    const cachedData = queryClient.getQueryData(["instrument", slug]);
 
-    // If not in cache, fetch fresh data
+    if (cachedData) {
+      return cachedData;
+    }
+
     const result = await queryClient.fetchQuery({
-      queryKey: ["instrument", instrumentId],
-      queryFn: () => fetchInstrumentById(instrumentId),
+      queryKey: ["instrument", slug],
+      queryFn: () => fetchInstrumentById(slug),
       staleTime: 5000,
     });
-
-    console.log("result: ", result?.[0] || null);
 
     setData(result?.[0] || null);
   };
 
+  useEffect(() => {
+    if (!injectedSlug) {
+      return;
+    }
+
+    getInstrument(injectedSlug);
+  }, [injectedSlug]);
+
   return {
-    prefetchInstrument,
-    getInstrument,
     data,
+    prefetchInstrument,
   };
 };
 

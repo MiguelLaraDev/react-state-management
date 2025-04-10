@@ -6,7 +6,7 @@ import locale from "./data/localization.json";
 import { getFilters } from "./helpers/filters.helper";
 import {
   getFilteredInstruments,
-  getInstrumentById,
+  getInstrumentBySlug,
   processFilters,
 } from "./helpers/instruments.helper";
 
@@ -32,9 +32,9 @@ export const handlers = [
     return HttpResponse.json(result);
   }),
 
-  http.get("/api/instruments/:id", async ({ params }) => {
-    const id = Number(params.id);
-    const result = getInstrumentById(db as Instrument[], id);
+  http.get("/api/instruments/:slug", async ({ params }) => {
+    const slug = String(params.slug);
+    const result = getInstrumentBySlug(db as Instrument[], slug);
 
     await delay(0);
 
