@@ -15,7 +15,9 @@ const useFixedPositionOnScroll = (id: string | null, offset: number, padding = 0
       const ref = document.querySelector(`#${id}`);
       if (!ref) return;
 
-      const style = `position: fixed; top: ${offset - padding}px;`;
+      const left = ref.getBoundingClientRect().left + "px";
+
+      const style = `position: fixed; top: ${offset - padding}px; left: ${left}; width: auto;`;
       ticking = true;
 
       window.requestAnimationFrame(() => {
@@ -25,7 +27,7 @@ const useFixedPositionOnScroll = (id: string | null, offset: number, padding = 0
 
         if (scrollDirection === "down" && yPos < offset) {
           ref.setAttribute("style", style);
-        } else if (scrollDirection === "up" && currentScrollY <= offset) {
+        } else if (scrollDirection === "up" && currentScrollY <= offset + 100) {
           ref.removeAttribute("style");
         }
 
