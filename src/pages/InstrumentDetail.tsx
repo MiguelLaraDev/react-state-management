@@ -4,8 +4,16 @@ import { Link, useParams } from "react-router-dom";
 import ImageGallery from "../components/ImageGallery";
 import Score from "../components/Score";
 import Button from "../components/ui-toolkit/Button";
+import Selector from "../components/ui-toolkit/Selector";
 import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 import { useCartStore, type CartStoreItem } from "../stores/cart.store";
+
+const quantityItems = () => {
+  return Array.from({ length: 10 }).map((_, index) => ({
+    id: String(index),
+    label: String(index + 1),
+  }));
+};
 
 const InstrumentDetail = () => {
   const { add } = useCartStore();
@@ -64,16 +72,14 @@ const InstrumentDetail = () => {
         </p>
 
         <div className='w-full flex flex-row items-center justify-between gap-4'>
-          {/* TODO: It should be a <select></select>: */}
-          <input
-            type='number'
-            className={classNames(
-              "w-fit max-w-16 bg-neutral-200 px-4 py-2 rounded-full",
-              "appearance-none"
-            )}
+          <Selector
+            name='quantity'
+            selected='1'
+            items={quantityItems()}
+            onSelect={() => console.log("onSelect!")}
           />
 
-          <Button label='ADD TO BASKET' onClick={onCartButtonClicked} />
+          <Button label='ADD TO BASKET' size='md' onClick={onCartButtonClicked} />
         </div>
       </div>
     </div>
