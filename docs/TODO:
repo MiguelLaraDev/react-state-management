@@ -2,11 +2,8 @@ TODO:
 ------
 
 Instrument page: 
-    Add to cart.
     More styling.
     Remove the filter box dinamically.
-
-Restore the padding between md and xl in Layout.
 
 Add some cool animations.
 
@@ -20,11 +17,9 @@ Add tests.
 
 Fix Filter desktop padding when is position:fixed.
 
-Improve main title.
-
 Add a footer?
 
-Add tab title?
+Add tab head title?
 
 -------
 

@@ -14,7 +14,7 @@ const Button = ({ className = "", icon, label, onClick }: ButtonProps) => {
     <button
       className={classNames(
         "flex flex-row items-center gap-2 bg-black text-white text-sm px-4 py-1",
-        "rounded-4xl",
+        "rounded-4xl cursor-pointer",
         "hover:opacity-80 whitespace-nowrap",
         className
       )}
