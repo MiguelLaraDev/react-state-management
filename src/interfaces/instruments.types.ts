@@ -6,10 +6,7 @@ export interface InstrumentFilterOptions {
   availability?: Instrument["availability"][];
   category?: Instrument["category"][];
   price?: string[];
-  scoreRange?: {
-    min: number;
-    max: number;
-  };
+  score?: number[];
   sortBy?: {
     field: Filter;
     direction: SortDirection;

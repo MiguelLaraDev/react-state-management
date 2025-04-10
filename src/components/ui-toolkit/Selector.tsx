@@ -37,7 +37,7 @@ const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
         name={name}
         className={classNames(
           "ml-4 h-full",
-          "appearance-none",
+          "appearance-none cursor-pointer",
           "focus:outline-none",
           "flex flex-row items-center"
         )}

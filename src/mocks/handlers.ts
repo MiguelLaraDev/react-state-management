@@ -14,8 +14,9 @@ export const handlers = [
   http.get("/api/instruments", async ({ request }) => {
     const filters = processFilters(request);
 
+    // TODO: Improve this by moving inside processFilters:
     const url = new URL(request.url);
-    const params = Object.fromEntries(url.searchParams.entries()); // TODO: Improve this by moving inside processFilters...
+    const params = Object.fromEntries(url.searchParams.entries());
 
     const options: InstrumentFilterOptions = {
       ...filters,

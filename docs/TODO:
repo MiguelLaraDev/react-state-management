@@ -1,28 +1,31 @@
-TODO:
-------
 
 
-Filters: Stars and 500+ doesn't work.
+Filters: "Stars" and "500+" doesn't work.
+
+Fix Filter desktop padding when is position:fixed.
+
+Add all the locales.
 
 Instrument page: 
+    BUG: Only one insturment is correctly loaded.
     The position of the buying-box should be different in mobile and desktop.
     Add to cart more than one item.
     Add number of voters beside the stars.
-    Improve breadscrumb.
 
 Add some cool animations.
 
 Recycle list items.
 
-Add all the locales.
-
 Add tests.
 
-Fix Filter desktop padding when is position:fixed.
 
 Add a footer?
 
 Add tab head title?
+
+Improve breadscrumb.
+
+Improve error and loading pages.
 
 -------
 

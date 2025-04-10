@@ -29,13 +29,18 @@ export const processFilters = (request: StrictRequest<DefaultBodyType>) => {
 
   const paginationAndSortingKeys = new Set(["page", "sort_by", "sort_direction"]);
 
-  const filters: Record<string, string | string[] | SortBy> = {};
+  const filters: Record<string, string | string[] | number[] | SortBy> = {};
 
   for (const [key, value] of Object.entries(params)) {
     if (value === "" || paginationAndSortingKeys.has(key)) continue;
 
     filters[key] = value.split("|");
   }
+
+  filters.score = params.score
+    .split("|")
+    .filter((item) => item !== "")
+    .map((item) => Number(item));
 
   filters.sortBy = {
     field: (params?.sort_by ?? "name") as Filter,
@@ -52,7 +57,7 @@ export const getFilteredInstruments = (
   const {
     category = [],
     price = [],
-    scoreRange = { min: 0, max: 5 },
+    score = [],
     availability = [],
     sortBy = { field: "name", direction: "asc" },
     pagination = { page: 1, pageSize: 10 },
@@ -66,9 +71,7 @@ export const getFilteredInstruments = (
 
     const priceMatch = priceChecker(instrument.price, price);
 
-    const scoreMatch = scoreRange
-      ? instrument.score >= scoreRange.min && instrument.score <= scoreRange.max
-      : true;
+    const scoreMatch = score.length === 0 || score.includes(Math.ceil(instrument.score));
 
     const availabilityMatch =
       availability.length === 0 || availability.includes(instrument.availability);
