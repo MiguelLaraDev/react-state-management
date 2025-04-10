@@ -32,8 +32,8 @@ const InstrumentDetail = () => {
   };
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-      <div id='instrument-details' className='flex flex-col gap-4 md:col-span-3'>
+    <div className='grid grid-cols-1 md:grid-cols-[1fr_300px] gap-4'>
+      <div id='instrument-details' className='flex flex-col gap-4'>
         <div className='flex flex-row items-center gap-1'>
           <Score score={4} />
           <p className='text-xs text-neutral-500 font-semibold pt-1'>NNN</p>
@@ -50,7 +50,7 @@ const InstrumentDetail = () => {
         </p>
       </div>
 
-      <div id='buying-info' className='flex flex-col gap-2 md:col-span-1 md:gap-4 overflow-hidden'>
+      <div id='buying-info' className='flex flex-col gap-2 md:gap-4 overflow-hidden'>
         <div className='flex flex-col gap-0 md:gap-1'>
           <p
             className={classNames(
