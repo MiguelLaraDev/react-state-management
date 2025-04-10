@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import logo from "@assets/logo.svg";
-import CartWidget from "../components/CartWidget";
+import CartWidget from "./cart/CartWidget";
 
 const Header = () => {
   return (
