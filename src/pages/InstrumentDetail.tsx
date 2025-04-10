@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { isMobile } from "react-device-detect";
 import { Link, useParams } from "react-router-dom";
 
+import { useState } from "react";
 import ImageGallery from "../components/ImageGallery";
 import AvailabilityBadge from "../components/instruments/AvailabilityBadge";
 import Score from "../components/Score";
@@ -10,17 +11,25 @@ import Selector from "../components/ui-toolkit/Selector";
 import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 import { useCartStore, type CartStoreItem } from "../stores/cart.store";
 
-const quantityItems = () => {
+interface QuantityItem {
+  id: string;
+  label: string;
+}
+
+const getQuantityItems = (): QuantityItem[] => {
   return Array.from({ length: 10 }).map((_, index) => ({
-    id: String(index),
+    id: String(index + 1),
     label: String(index + 1),
   }));
 };
+
+const quantityItems = getQuantityItems();
 
 const InstrumentDetail = () => {
   const { add } = useCartStore();
   const { slug } = useParams();
   const { data } = useInstrumentPrefetch(slug);
+  const [quantity, setQuantity] = useState<string>(quantityItems[0].id);
 
   // TODO: Handle loading and error...
   if (!data) {
@@ -30,7 +39,7 @@ const InstrumentDetail = () => {
   const { id, name, image, price, availability, long_description } = data;
 
   const onCartButtonClicked = () => {
-    add({ id, image, name, price, slug } as CartStoreItem);
+    add({ id, image, name, price, slug } as CartStoreItem, parseInt(quantity));
   };
 
   const description = (
@@ -38,7 +47,7 @@ const InstrumentDetail = () => {
   );
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-[1fr_300px] gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4'>
       <div id='instrument-details' className='flex flex-col gap-4'>
         <div className='flex flex-row items-center gap-1'>
           <Score score={4} />
@@ -54,7 +63,7 @@ const InstrumentDetail = () => {
         {!isMobile && description}
       </div>
 
-      <div id='buying-info' className='flex flex-col gap-2 md:gap-4 overflow-hidden'>
+      <div id='buying-box' className='flex flex-col gap-2 md:gap-4 overflow-hidden'>
         <div className='flex flex-col gap-0 md:gap-1'>
           <p
             className={classNames(
@@ -72,9 +81,9 @@ const InstrumentDetail = () => {
         <div className='w-full flex flex-row items-center justify-between gap-4'>
           <Selector
             name='quantity'
-            selected='1'
-            items={quantityItems()}
-            onSelect={() => console.log("onSelect!")}
+            selected={quantity}
+            items={quantityItems}
+            onSelect={setQuantity}
           />
 
           <Button label='ADD TO BASKET' size='md' onClick={onCartButtonClicked} />

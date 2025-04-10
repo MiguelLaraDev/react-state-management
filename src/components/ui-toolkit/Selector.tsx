@@ -1,7 +1,6 @@
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { useRef } from "react";
 
 interface SelectorProps {
   name: string;
@@ -14,41 +13,30 @@ interface SelectorProps {
 }
 
 const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
-  const selectRef = useRef<HTMLSelectElement>(null);
-
-  const handleWrapperClick = () => {
-    if (selectRef.current) {
-      selectRef.current.focus(); // Needed for some browsers
-      selectRef.current.click(); // Triggers the dropdown
-    }
-  };
-
   return (
     <div
       className={classNames(
-        "relative inline-block w-12 h-12 min-w-20 bg-neutral-200 px-2 rounded-full",
+        "relative inline-block w-12 h-12 min-w-20 bg-neutral-200 rounded-full",
         "flex flex-row items-center justify-center overflow-hidden",
         "cursor-pointer hover:bg-neutral-300"
       )}
-      onClick={handleWrapperClick}
     >
       <select
-        ref={selectRef}
         name={name}
         className={classNames(
-          "ml-4 h-full",
+          "w-full h-full pl-8",
           "appearance-none cursor-pointer",
-          "focus:outline-none",
-          "flex flex-row items-center"
+          "focus:outline-none"
         )}
         defaultValue={selected}
+        onChange={(e) => onSelect(e.currentTarget.value)}
       >
         <option value='' disabled hidden>
           {selected}
         </option>
 
         {items.map(({ id, label }) => (
-          <option key={id} value={id} onClick={() => onSelect(id)} className='pl-4'>
+          <option key={id} value={id} className='pl-4'>
             {label}
           </option>
         ))}
