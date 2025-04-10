@@ -13,7 +13,8 @@ const Layout = () => {
       <main
         className={classNames(
           "w-full h-full flex flex-col gap-4 p-4 mt-12 2xl:w-[1024px] 2xl:mx-auto",
-          "md:gap-12 md:px-0 md:pt-8"
+          "md:gap-12 md:p-8",
+          "lg:px-20 2xl:px-0"
         )}
       >
         {/* TODO: Add breascrumb here... */}

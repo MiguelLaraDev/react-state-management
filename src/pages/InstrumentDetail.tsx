@@ -34,7 +34,7 @@ const InstrumentDetail = () => {
         </p>
       </div>
 
-      <div id='buying-info' className='flex flex-col gap-2 md:col-span-1 md:gap-4'>
+      <div id='buying-info' className='flex flex-col gap-2 md:col-span-1 md:gap-4 overflow-hidden'>
         <div className='flex flex-col gap-0 md:gap-1'>
           <p
             className={classNames(

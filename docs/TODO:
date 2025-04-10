@@ -4,7 +4,6 @@ TODO:
 Instrument page: 
     Add to cart.
     More styling.
-    Pull the data from cache or fetch it.
     Remove the filter box dinamically.
 
 Restore the padding between md and xl in Layout.
