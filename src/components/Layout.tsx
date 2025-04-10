@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import { Outlet } from "react-router-dom";
 
-import Filter from "./Filter";
 import Header from "./Header";
 import MainTitle from "./MainTitle";
+import FiltersWrapper from "./filters/FiltersWrapper";
 
 const Layout = () => {
   return (
@@ -22,14 +22,7 @@ const Layout = () => {
         <MainTitle />
 
         <div className='w-full h-full flex flex-row gap-4'>
-          <div
-            className={classNames(
-              "absolute top-0 left-0 right-0 bottom-0 z-50 pointer-events-none",
-              "md:relative md:w-1/4"
-            )}
-          >
-            <Filter />
-          </div>
+          <FiltersWrapper />
 
           <div className='w-full flex flex-grow flex-1'>
             <Outlet />
