@@ -16,6 +16,8 @@ const useInstrumentPrefetch = (injectedSlug?: string) => {
   const [data, setData] = useState<Instrument | null>(null);
 
   const prefetchInstrument = async (slug: string) => {
+    console.log("prefetch");
+
     await queryClient.prefetchQuery({
       queryKey: ["instrument", slug],
       queryFn: () => fetchInstrumentById(slug),
@@ -24,12 +26,12 @@ const useInstrumentPrefetch = (injectedSlug?: string) => {
   };
 
   const getInstrument = async (slug: string) => {
-    const cachedData = queryClient.getQueryData(["instrument", slug]);
+    const cachedData = queryClient.getQueryData(["instrument", slug]) as Instrument[];
 
     if (cachedData) {
+      setData(cachedData[0]);
       return cachedData;
     }
-
     const result = await queryClient.fetchQuery({
       queryKey: ["instrument", slug],
       queryFn: () => fetchInstrumentById(slug),

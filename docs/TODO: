@@ -4,7 +4,6 @@
 Add all the locales.
 
 Instrument page: 
-    BUG: Only one insturment is correctly loaded.
     The position of the buying-box should be different in mobile and desktop.
     Add to cart more than one item.
     Add number of voters beside the stars.
@@ -15,10 +14,9 @@ Recycle list items.
 
 Add tests.
 
+Add a footer.
 
-Add a footer?
-
-Add tab head title?
+Add tab head title.
 
 Improve breadscrumb.
 
