@@ -10,17 +10,17 @@ const InstrumentDetail = () => {
     <div
       className={classNames(
         "w-full h-fit flex flex-col gap-4 border border-red-500",
-        "[&>div]:border [&_div]:border-violet-500"
+        "[&_div]:border [&_div]:border-violet-500"
       )}
     >
       <div id='instrument-details' className='flex flex-col gap-4'>
         <div className='flex flex-row items-center gap-1'>
-          <Score score={4} size='???' />
+          <Score score={4} />
           <p className='text-xs text-neutral-500 font-semibold pt-1'>811</p>
         </div>
 
-        <Link to='/brand/????' className='w-fit min-w-24 h-12 bg-neutral-100'>
-          <img src='/images/brands/logo' alt='???' />
+        <Link to='/brand/????' className='w-fit h-fit bg-neutral-100'>
+          <img src='/images/brands/brand_example.gif' alt='???' />
         </Link>
 
         <ImageGallery />
