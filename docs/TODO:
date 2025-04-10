@@ -2,8 +2,10 @@ TODO:
 ------
 
 Instrument page: 
-    Add details page.
-    Add breadscrumb.
+    Add to cart.
+    More styling.
+    Pull the data from cache or fetch it.
+    Remove the filter box dinamically.
 
 Add some cool animations.
 
