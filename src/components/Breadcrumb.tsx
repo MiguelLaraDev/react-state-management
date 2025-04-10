@@ -12,7 +12,7 @@ const Breadcrumb = () => {
       )}
     >
       <Link to=''>Home</Link>
-      <Link to=''>Instruments</Link>
+      <Link to='/instruments'>Instruments</Link>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Link, useParams } from "react-router-dom";
 
 import ImageGallery from "../components/ImageGallery";
+import AvailabilityBadge from "../components/instruments/AvailabilityBadge";
 import Score from "../components/Score";
 import Button from "../components/ui-toolkit/Button";
 import Selector from "../components/ui-toolkit/Selector";
@@ -61,13 +62,7 @@ const InstrumentDetail = () => {
           <p className='text-sm md:text-base'>All prices incl. VAT</p>
         </div>
 
-        <p
-          className={classNames("text-sm md:text-base", {
-            "text-green-700": true,
-          })}
-        >
-          {availability}
-        </p>
+        <AvailabilityBadge status={availability} />
 
         <div className='w-full flex flex-row items-center justify-between gap-4'>
           <Selector

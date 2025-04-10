@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import useInstrumentPrefetch from "../../hooks/useInstrumentPrefetch";
 import type { Instrument } from "../../interfaces/instruments.types";
 import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
-import { availabilityConfig } from "../../utils/configs";
 import Score from "../Score";
+import AvailabilityBadge from "./AvailabilityBadge";
 
 const InstrumentItem = ({
   availability,
@@ -64,14 +64,7 @@ const InstrumentItem = ({
 
           <p className='text-xs text-neutral-600 md:text-base'>{description}</p>
 
-          <p
-            className={classNames(
-              "mt-auto text-xs md:text-base",
-              availabilityConfig[availability].color
-            )}
-          >
-            {availabilityConfig[availability].label}
-          </p>
+          <AvailabilityBadge status={availability} className='mt-auto' />
         </div>
       </Link>
 
