@@ -9,6 +9,11 @@ const CartPing = ({ count }: CartPingProps) => {
   const [enable, setEnable] = useState(false);
 
   useEffect(() => {
+    if (count === 0) {
+      setLastCount(0);
+      return;
+    }
+
     if (count <= lastCount) return;
 
     setEnable(true);
