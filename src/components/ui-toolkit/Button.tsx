@@ -15,7 +15,7 @@ const Button = ({ className = "", icon, label, onClick }: ButtonProps) => {
       className={classNames(
         "flex flex-row items-center gap-2 bg-black text-white text-sm px-4 py-1",
         "rounded-4xl",
-        "hover:opacity-80",
+        "hover:opacity-80 whitespace-nowrap",
         className
       )}
       onClick={onClick}
