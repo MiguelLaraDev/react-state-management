@@ -24,11 +24,11 @@ const MainTitle = () => {
       break;
 
     case slug !== undefined:
-      title = data?.name || "Your instrument"; // TODO: Pull it from localization...
+      title = data?.name || locale["instrument-detail-default-title"];
       break;
 
     default:
-      title = "Welcome to your instruments store!"; // TODO: Pull it from localization...
+      title = locale["app-default-title"];
       break;
   }
 

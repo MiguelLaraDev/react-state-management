@@ -16,7 +16,7 @@ const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
   return (
     <div
       className={classNames(
-        "relative inline-block w-12 h-12 min-w-20 bg-neutral-200 rounded-full",
+        "relative inline-block h-12 min-w-20 bg-neutral-200 rounded-full",
         "flex flex-row items-center justify-center overflow-hidden",
         "cursor-pointer hover:bg-neutral-300"
       )}
@@ -24,7 +24,7 @@ const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
       <select
         name={name}
         className={classNames(
-          "w-full h-full pl-8",
+          "w-full h-full pl-4 mx-auto",
           "appearance-none cursor-pointer",
           "focus:outline-none"
         )}
