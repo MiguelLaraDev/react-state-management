@@ -31,12 +31,15 @@ const InstrumentDetail = () => {
   const { data } = useInstrumentPrefetch(slug);
   const [quantity, setQuantity] = useState<string>(quantityItems[0].id);
 
-  // TODO: Handle loading and error...
   if (!data) {
-    return <div className="text-red-500 text-3xl">Ups, no instrument found...</div>;
+    return <div className="text-green-700 text-2xl">...loading</div>;
   }
 
-  const { id, name, image, price, availability, long_description, reviewers } = data;
+  if (data?.length === 0) {
+    return <div className="text-red-700 text-2xl">Ups, no instrument found...</div>;
+  }
+
+  const { id, name, image, price, availability, long_description, reviewers } = data[0];
 
   const onCartButtonClicked = () => {
     add({ id, image, name, price, slug } as CartStoreItem, parseInt(quantity));

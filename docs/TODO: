@@ -1,4 +1,6 @@
-Improve error and loading pages.
+Improve error and loading pages:
+
+- Replace: "...loading" by a placeholder.
 
 Add a footer.
 
