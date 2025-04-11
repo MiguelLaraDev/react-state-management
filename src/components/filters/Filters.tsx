@@ -36,15 +36,14 @@ const Filter = () => {
       id='filter'
       className={classNames(
         "w-full h-fit flex flex-col gap-8 z-50 p-4 bg-white",
-        "fixed -left-[100vw]",
+        "relative -left-[100vw]",
         "pointer-events-auto",
         "transition-transform duration-300 ease-in-out",
         isMobile && {
           "translate-x-0": !filterIsOpen,
           "translate-x-full": filterIsOpen,
         },
-        "md:relative md:left-0",
-        "md:z-1 md:bg-transparent md:p-0"
+        "md:left-0 md:z-1 md:bg-transparent md:p-0"
       )}
     >
       <div className='flex flex-row items-center justify-between visible md:hidden'>
@@ -63,11 +62,12 @@ const Filter = () => {
 
           return (
             <div key={filter.id} className='flex flex-col gap-2'>
-              <h3 className='font-semibold text-lg'>{locale[filter.id]}</h3>
+              <h3 className='font-semibold text-lg'>{locale[filter.id] as string}</h3>
 
               <ul className='flex flex-col gap-1 ml-2'>
                 {items.map((item) => {
-                  const label = filter.id === "score" ? null : (locale[item.id] ?? item.id);
+                  const label =
+                    filter.id === "score" ? null : ((locale[item.id] as string) ?? item.id);
 
                   // TODO: Memoize item:
                   return (

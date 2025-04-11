@@ -14,7 +14,8 @@ const FiltersWrapper = () => {
     <div
       className={classNames(
         "absolute top-0 left-0 right-0 bottom-0 z-50 pointer-events-none",
-        "md:relative md:w-1/4"
+        "h-dvh overflow-y-scroll",
+        "md:relative md:w-1/4 md:h-fit md:overflow-y-auto"
       )}
     >
       <Filters />

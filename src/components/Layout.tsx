@@ -15,7 +15,7 @@ const Layout = () => {
         className={classNames(
           "w-full h-full flex flex-col gap-4 p-4 mt-12",
           "md:gap-12 md:p-8",
-          "lg:w-[1024px] lg:mx-auto"
+          "lg:w-[1024px] lg:mx-auto lg:py-8 lg:px-0"
         )}
       >
         <Breadcrumb />
