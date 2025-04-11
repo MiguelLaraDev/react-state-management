@@ -55,7 +55,7 @@ export const useUserSelectionStore = create<UserSelectionStore>((set, get) => ({
   getParsedFilters: () => {
     const optionsStr = Object.entries(get().options).reduce(
       (acc, [key, value]) => `${acc}&${key}=${value.join("|")}`,
-      ""
+      "",
     );
 
     const sortBy = get().sortBy;

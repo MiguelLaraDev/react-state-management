@@ -10,7 +10,7 @@ const InstrumentLoading = () => {
             className={classNames(
               "w-full h-[200px] flex flex-row gap-0 p-0 rounded-xl",
               "bg-neutral-200",
-              "animate-pulse"
+              "animate-pulse",
             )}
           />
         );

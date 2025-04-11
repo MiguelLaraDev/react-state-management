@@ -31,9 +31,9 @@ const CartPing = ({ count }: CartPingProps) => {
   }
 
   return (
-    <span id='cart-ping' className='absolute flex size-8 -top-1 -left-1'>
-      <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75'></span>
-      <span className='absolute inline-flex size-4 rounded-full animate-ping bg-green-500 top-2 left-2 opacity-75'></span>
+    <span id="cart-ping" className="absolute flex size-8 -top-1 -left-1">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
+      <span className="absolute inline-flex size-4 rounded-full animate-ping bg-green-500 top-2 left-2 opacity-75"></span>
     </span>
   );
 };

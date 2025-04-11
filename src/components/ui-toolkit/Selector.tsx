@@ -18,7 +18,7 @@ const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
       className={classNames(
         "relative inline-block h-12 min-w-20 bg-neutral-200 rounded-full",
         "flex flex-row items-center justify-center overflow-hidden",
-        "cursor-pointer hover:bg-neutral-300"
+        "cursor-pointer hover:bg-neutral-300",
       )}
     >
       <select
@@ -26,24 +26,24 @@ const Selector = ({ selected, name, items, onSelect }: SelectorProps) => {
         className={classNames(
           "w-full h-full pl-4 mx-auto",
           "appearance-none cursor-pointer",
-          "focus:outline-none"
+          "focus:outline-none",
         )}
         defaultValue={selected}
         onChange={(e) => onSelect(e.currentTarget.value)}
       >
-        <option value='' disabled hidden>
+        <option value="" disabled hidden>
           {selected}
         </option>
 
         {items.map(({ id, label }) => (
-          <option key={id} value={id} className='pl-4'>
+          <option key={id} value={id} className="pl-4">
             {label}
           </option>
         ))}
       </select>
 
-      <div className='absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none'>
-        <FontAwesomeIcon icon={faSort} className='text-neutral-500' />
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+        <FontAwesomeIcon icon={faSort} className="text-neutral-500" />
       </div>
     </div>
   );

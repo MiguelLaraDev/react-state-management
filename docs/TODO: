@@ -1,5 +1,4 @@
 
-BUG: Filter doesn't appears in mobile.
 
 Add a footer.
 
@@ -8,7 +7,7 @@ Add tab head title.
 <img> to <picture></picture>
 
 Improve breadscrumb.
-
+    
 Single quotes to double quotes.
 
 Imports with @

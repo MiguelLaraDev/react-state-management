@@ -7,7 +7,7 @@ import type { SortBy } from "../../stores/filters.store";
 export const selectByField = <FieldName extends keyof Instrument>(
   instruments: Instrument[],
   field: FieldName,
-  value: Instrument[FieldName]
+  value: Instrument[FieldName],
 ) => {
   return instruments.filter((instrument) => instrument[field] === value);
 };
@@ -52,7 +52,7 @@ export const processFilters = (request: StrictRequest<DefaultBodyType>) => {
 
 export const getFilteredInstruments = (
   instruments: Instrument[],
-  options: InstrumentFilterOptions = {}
+  options: InstrumentFilterOptions = {},
 ): InstrumentApiResponse => {
   const {
     category = [],

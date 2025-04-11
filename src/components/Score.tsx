@@ -9,11 +9,11 @@ interface ScoreProps {
 
 const Score = ({ score }: ScoreProps) => {
   return (
-    <div className='flex gap-1'>
+    <div className="flex gap-1">
       {Array.from({ length: 5 }).map((_, i) => {
         const icon = i <= score ? faStar : faStarOutline;
 
-        return <FontAwesomeIcon key={`score-${i}`} icon={icon} className='text-xs md:text-base' />;
+        return <FontAwesomeIcon key={`score-${i}`} icon={icon} className="text-xs md:text-base" />;
       })}
     </div>
   );

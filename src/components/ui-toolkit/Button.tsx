@@ -22,7 +22,7 @@ const Button = ({ className = "", icon, label, size = "sm", onClick }: ButtonPro
           "px-4 h-8 text-sm": size === "sm",
           "px-6 h-12 text-base": size === "md",
         },
-        className
+        className,
       )}
       onClick={onClick}
     >

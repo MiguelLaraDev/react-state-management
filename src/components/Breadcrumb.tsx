@@ -8,11 +8,11 @@ const Breadcrumb = () => {
         "flex flex-row item-center gap-2",
         "[&>a]:bg-neutral-100 [&>a]:text-xs [&>a]:py-1 [&>a]:px-2",
         "[&>a]:flex [&>a]:flex-row [&>a]:item-center",
-        "[&>a]:hover:bg-neutral-200"
+        "[&>a]:hover:bg-neutral-200",
       )}
     >
-      <Link to=''>Home</Link>
-      <Link to='/instruments'>Instruments</Link>
+      <Link to="">Home</Link>
+      <Link to="/instruments">Instruments</Link>
     </div>
   );
 };

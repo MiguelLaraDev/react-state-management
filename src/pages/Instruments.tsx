@@ -24,17 +24,17 @@ const Instruments = () => {
   const { toggleFilter } = useUiStore();
 
   return (
-    <div className='w-full h-fit flex flex-col gap-4'>
+    <div className="w-full h-fit flex flex-col gap-4">
       {status === "error" && <div>Error: {error?.message}</div>}
 
       {status === "pending" && <InstrumentLoading />}
 
       {status === "success" && (
         <>
-          <div className='flex flex-row items-center'>
+          <div className="flex flex-row items-center">
             <Button
-              className='md:hidden md:pointer-events-none'
-              label='Filter'
+              className="md:hidden md:pointer-events-none"
+              label="Filter"
               icon={faSliders}
               onClick={toggleFilter}
             />

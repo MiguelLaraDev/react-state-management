@@ -36,13 +36,13 @@ const InstrumentItem = ({
     <div
       className={classNames(
         "w-full h-32 flex flex-row gap-0 p-0 rounded-xl border border-neutral-200 overflow-hidden",
-        "md:h-[200px]"
+        "md:h-[200px]",
       )}
     >
       <div
         className={classNames(
           "w-[120px] min-w-[120px] h-[120px] bg-white py-6",
-          "md:w-1/4 md:min-w-[142px] md:h-full"
+          "md:w-1/4 md:min-w-[142px] md:h-full",
         )}
       >
         <Link to={detailsURL} onMouseEnter={prefetch}>
@@ -52,32 +52,32 @@ const InstrumentItem = ({
 
       <Link
         to={detailsURL}
-        className='flex-grow hover:[&_h2]:text-violet-700'
+        className="flex-grow hover:[&_h2]:text-violet-700"
         onMouseEnter={prefetch}
       >
         <div
           className={classNames("w-full h-full flex flex-col gap-2 px-0 py-2", "md:px-8 md:py-4")}
         >
-          <h2 className='font-semibold text-base md:text-2xl'>{name}</h2>
+          <h2 className="font-semibold text-base md:text-2xl">{name}</h2>
 
           <Score score={score} />
 
-          <p className='text-xs text-neutral-600 md:text-base'>{description}</p>
+          <p className="text-xs text-neutral-600 md:text-base">{description}</p>
 
-          <AvailabilityBadge status={availability} className='mt-auto' />
+          <AvailabilityBadge status={availability} className="mt-auto" />
         </div>
       </Link>
 
       <div
         className={classNames(
           "w-fit flex flex-col items-end justify-between p-2 pr-4",
-          "md:w-1/4 md:p-8"
+          "md:w-1/4 md:p-8",
         )}
       >
         <p
           className={classNames(
             "font-bold text-base tracking-tighter whitespace-nowrap",
-            "md:text-3xl"
+            "md:text-3xl",
           )}
         >
           {price} €
@@ -88,7 +88,7 @@ const InstrumentItem = ({
             "w-6 h-6 rounded-full p-0",
             "flex items-center justify-center",
             "cursor-pointer hover:bg-neutral-200",
-            "md:p-4 md:w-12 md:h-12"
+            "md:p-4 md:w-12 md:h-12",
           )}
           onClick={onCartButtonClicked}
         >
