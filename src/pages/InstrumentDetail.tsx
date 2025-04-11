@@ -36,7 +36,7 @@ const InstrumentDetail = () => {
     return <div className="text-red-500 text-3xl">Ups, no instrument found...</div>;
   }
 
-  const { id, name, image, price, availability, long_description } = data;
+  const { id, name, image, price, availability, long_description, reviewers } = data;
 
   const onCartButtonClicked = () => {
     add({ id, image, name, price, slug } as CartStoreItem, parseInt(quantity));
@@ -51,7 +51,7 @@ const InstrumentDetail = () => {
       <div id="instrument-details" className="flex flex-col gap-4">
         <div className="flex flex-row items-center gap-1">
           <Score score={4} />
-          <p className="text-xs text-neutral-500 font-semibold pt-1">NNN</p>
+          <p className="text-xs text-neutral-500 font-semibold pt-1">{reviewers}</p>
         </div>
 
         <Link to="/brand/????" className="w-fit h-fit bg-neutral-100">

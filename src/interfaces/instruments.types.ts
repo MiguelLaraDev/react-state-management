@@ -26,6 +26,7 @@ export interface Instrument {
   image: string;
   name: string;
   price: number;
+  reviewers: number;
   score: number;
   slug: string;
   thumb_medium: string;
