@@ -1,13 +1,13 @@
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { memo } from "react";
 
-import InstrumentItem from ".@components/instruments/InstrumentItem";
-import InstrumentLoading from ".@components/instruments/InstrumentLoading";
-import SortingBox from ".@components/SortingBox";
-import Button from ".@components/ui-toolkit/Button";
+import InstrumentItem from "@components/instruments/InstrumentItem";
+import InstrumentLoading from "@components/instruments/InstrumentLoading";
+import SortingBox from "@components/SortingBox";
 import useInstrumentFetch from "@hooks/useInstrumentFetch";
 import type { Instrument } from "@interfaces/instruments.types";
 import { useUiStore } from "@stores/ui.store";
+import Button from "@ui-toolkit/Button";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
   return (
