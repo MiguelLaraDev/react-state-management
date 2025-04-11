@@ -2,13 +2,13 @@ import classNames from "classnames";
 import { isMobile } from "react-device-detect";
 import { Link, useParams } from "react-router-dom";
 
+import ImageGallery from ".@components/ImageGallery";
+import AvailabilityBadge from ".@components/instruments/AvailabilityBadge";
+import Score from ".@components/Score";
+import Button from ".@components/ui-toolkit/Button";
+import Selector from ".@components/ui-toolkit/Selector";
+import useInstrumentPrefetch from "@hooks/useInstrumentPrefetch";
 import { useState } from "react";
-import ImageGallery from "../components/ImageGallery";
-import AvailabilityBadge from "../components/instruments/AvailabilityBadge";
-import Score from "../components/Score";
-import Button from "../components/ui-toolkit/Button";
-import Selector from "../components/ui-toolkit/Selector";
-import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 import { useCartStore, type CartStoreItem } from "../stores/cart.store";
 
 interface QuantityItem {

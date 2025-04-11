@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 
-import useInstrumentPrefetch from "../../hooks/useInstrumentPrefetch";
 import type { Instrument } from "../../interfaces/instruments.types";
 import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
+import useInstrumentPrefetch from "../@hooks/useInstrumentPrefetch";
 import Score from "../Score";
 import AvailabilityBadge from "./AvailabilityBadge";
 

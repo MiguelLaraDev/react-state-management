@@ -1,6 +1,6 @@
+import useInstrumentFetch from "@hooks/useInstrumentFetch";
+import useInstrumentPrefetch from "@hooks/useInstrumentPrefetch";
 import { useLocation, useParams } from "react-router-dom";
-import useInstrumentFetch from "../hooks/useInstrumentFetch";
-import useInstrumentPrefetch from "../hooks/useInstrumentPrefetch";
 import { useLocalizationStore } from "../stores/locale.store";
 
 const MainTitle = () => {
@@ -18,7 +18,9 @@ const MainTitle = () => {
     case normalizedPathname === "":
     case normalizedPathname === "instruments":
       title = locale["instruments-page-title"] as string;
-      detail = <span className="text-base text-neutral-500 font-semibold ml-4 md:text-2xl">{total}</span>;
+      detail = (
+        <span className="text-base text-neutral-500 font-semibold ml-4 md:text-2xl">{total}</span>
+      );
       break;
 
     case slug !== undefined:

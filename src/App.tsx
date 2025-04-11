@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Layout from "./components/Layout";
-import useLocalizationFetch from "./hooks/useLocalizationFetch";
-import Instruments from "./pages/Instruments";
+import Layout from "@components/Layout";
+import useLocalizationFetch from "@hooks/useLocalizationFetch";
+import Instruments from "@pages/Instruments";
 
 const App = () => {
   useLocalizationFetch();
@@ -28,7 +28,7 @@ const App = () => {
             {
               path: ":slug",
               lazy: () =>
-                import("./pages/InstrumentDetail").then((module) => ({
+                import("@pages/InstrumentDetail").then((module) => ({
                   element: <module.default />,
                 })),
             },

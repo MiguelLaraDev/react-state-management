@@ -2,13 +2,13 @@ import classNames from "classnames";
 import { useMemo } from "react";
 import { isMobile } from "react-device-detect";
 
-import useFiltersFetch from "../../hooks/useFiltersFetch";
-import useFixedPositionOnScroll from "../../hooks/useFixedPositionOnScroll";
-import useScrollDisabled from "../../hooks/useScrollDisable";
 import type { Filter } from "../../interfaces/filters.types";
 import { useUserSelectionStore } from "../../stores/filters.store";
 import { useLocalizationStore } from "../../stores/locale.store";
 import { useUiStore } from "../../stores/ui.store";
+import useFiltersFetch from "../@hooks/useFiltersFetch";
+import useFixedPositionOnScroll from "../@hooks/useFixedPositionOnScroll";
+import useScrollDisabled from "../@hooks/useScrollDisable";
 import Score from "../Score";
 import ButtonClose from "../ui-toolkit/ButtonClose";
 import Checkbox from "../ui-toolkit/Checkbox";

@@ -1,5 +1,3 @@
-
-
 Add a footer.
 
 Add tab head title.
@@ -7,8 +5,6 @@ Add tab head title.
 <img> to <picture></picture>
 
 Improve breadscrumb.
-    
-Single quotes to double quotes.
 
 Imports with @
 
@@ -26,10 +22,10 @@ Add tests.
 
 Improve error and loading pages.
 
--------
+---
 
-If I click a instrument filter (for example guitar) 
-    The following filters should be updated.
-    For example: 
-        I click guitar, 
-        the prices filters should display only the price ranges of guitars.
+If I click a instrument filter (for example guitar)
+The following filters should be updated.
+For example:
+I click guitar,
+the prices filters should display only the price ranges of guitars.
