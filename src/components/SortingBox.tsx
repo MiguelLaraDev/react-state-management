@@ -46,8 +46,6 @@ const SortingBox = () => {
   const { updateSortBy } = useUserSelectionStore();
 
   const toggleDropdown = () => {
-    // TODO: Trigger animation here?
-
     setExpanded((v) => !v);
   };
 

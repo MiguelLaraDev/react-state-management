@@ -3,6 +3,8 @@ import classNames from "classnames";
 const InstrumentLoading = () => {
   return (
     <>
+      <span className="h-8" />
+
       {[0, 1, 2, 3, 4].map((i) => {
         return (
           <div

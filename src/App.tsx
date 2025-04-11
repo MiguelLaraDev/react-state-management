@@ -11,8 +11,8 @@ const App = () => {
     {
       path: "/",
       element: <Layout />,
-      errorElement: <div>Error page</div>,
-      hydrateFallbackElement: <p>Loading...</p>,
+      errorElement: <h1 className="text-red-500 text-3xl">Error page</h1>,
+      hydrateFallbackElement: <p className="text-green-500 text-3xl">Loading...</p>,
       children: [
         {
           index: true,

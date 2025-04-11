@@ -28,7 +28,7 @@ export const handlers = [
 
     const result = getFilteredInstruments(db as Instrument[], options);
 
-    await delay(0);
+    await delay(1500);
 
     return HttpResponse.json(result);
   }),
@@ -37,7 +37,7 @@ export const handlers = [
     const slug = String(params.slug);
     const result = getInstrumentBySlug(db as Instrument[], slug);
 
-    await delay(0);
+    await delay(1500);
 
     return HttpResponse.json(result);
   }),
@@ -45,7 +45,7 @@ export const handlers = [
   http.get("/api/filters", async () => {
     const filters = getFilters(db as Instrument[]);
 
-    await delay(0);
+    await delay(1500);
 
     return HttpResponse.json(filters);
   }),

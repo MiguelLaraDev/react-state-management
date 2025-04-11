@@ -1,3 +1,5 @@
+Improve error and loading pages.
+
 Add a footer.
 
 Add tab head title.
@@ -8,8 +10,6 @@ Improve breadscrumb.
 
 Image slider.
 
-Link in the logo.
-
 Select quantity in the cart popup.
 
 Instrument page: Add number of voters beside the stars.
@@ -17,8 +17,6 @@ Instrument page: Add number of voters beside the stars.
 Recycle list items.
 
 Add tests.
-
-Improve error and loading pages.
 
 ---
 

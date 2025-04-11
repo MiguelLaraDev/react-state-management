@@ -33,7 +33,7 @@ const InstrumentDetail = () => {
 
   // TODO: Handle loading and error...
   if (!data) {
-    return <div>Ups, no instrument found...</div>;
+    return <div className="text-red-500 text-3xl">Ups, no instrument found...</div>;
   }
 
   const { id, name, image, price, availability, long_description } = data;
