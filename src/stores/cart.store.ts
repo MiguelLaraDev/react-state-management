@@ -1,5 +1,5 @@
+import type { Instrument } from "@interfaces/instruments.types";
 import { create } from "zustand";
-import type { Instrument } from "../interfaces/instruments.types";
 
 export type CartStoreItem = Pick<Instrument, "id" | "image" | "name" | "price" | "slug"> & {
   quantity: number;

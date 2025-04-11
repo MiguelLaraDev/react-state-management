@@ -1,5 +1,5 @@
-import type { Filter, FilterOption } from "../../interfaces/filters.types";
-import type { Instrument } from "../../interfaces/instruments.types";
+import type { Filter, FilterOption } from "@interfaces/filters.types";
+import type { Instrument } from "@interfaces/instruments.types";
 
 const filters: FilterOption[] = [
   {

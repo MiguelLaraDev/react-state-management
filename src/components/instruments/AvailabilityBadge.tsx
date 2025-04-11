@@ -1,6 +1,6 @@
+import type { Availability } from "@interfaces/shared.types";
 import { useLocalizationStore } from "@stores/locale.store";
 import classNames from "classnames";
-import type { Availability } from "../../interfaces/shared.types";
 
 const colors = {
   available: "text-green-600",

@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import type { Instrument } from "../interfaces/instruments.types";
+import type { Instrument } from "@interfaces/instruments.types";
 
 const fetchInstrumentById = async (slug: string) => {
   const response = await fetch(`/api/instruments/${slug}`);

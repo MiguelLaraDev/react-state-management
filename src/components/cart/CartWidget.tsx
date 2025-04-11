@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 
 import { useCartStore, type CartStoreItem } from "@stores/cart.store";
 import { useLocalizationStore } from "@stores/locale.store";
-import ButtonClose from "../ui-toolkit/ButtonClose";
+import ButtonClose from "@ui-toolkit/ButtonClose";
 import CartPing from "./CartPing";
 
 const CartWidgetItem = ({ item, onRemove }: { item: CartStoreItem; onRemove: () => void }) => {

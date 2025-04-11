@@ -1,6 +1,6 @@
+import type { FilterOption } from "@interfaces/filters.types";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import type { FilterOption } from "../interfaces/filters.types";
 
 const fetchItems = async (): Promise<FilterOption[]> => {
   const response = await fetch("/api/filters");

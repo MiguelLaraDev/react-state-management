@@ -13,6 +13,8 @@ export default defineConfig({
       { find: "@hooks", replacement: path.resolve(__dirname, "src/hooks") },
       { find: "@pages", replacement: path.resolve(__dirname, "src/pages") },
       { find: "@stores", replacement: path.resolve(__dirname, "src/stores") },
+      { find: "@interfaces", replacement: path.resolve(__dirname, "src/interfaces") },
+      { find: "@ui-toolkit", replacement: path.resolve(__dirname, "src/components/ui-toolkit") },
     ],
   },
 });

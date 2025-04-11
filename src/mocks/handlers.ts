@@ -1,6 +1,6 @@
 import { delay, http, HttpResponse } from "msw";
 
-import type { Instrument, InstrumentFilterOptions } from "../interfaces/instruments.types";
+import type { Instrument, InstrumentFilterOptions } from "@interfaces/instruments.types";
 import db from "./data/database.json";
 import locale from "./data/localization.json";
 import { getFilters } from "./helpers/filters.helper";

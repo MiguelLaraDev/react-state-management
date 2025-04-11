@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 
+import type { Filter } from "@interfaces/filters.types";
+import type { SortDirection } from "@interfaces/shared.types";
 import { useUserSelectionStore } from "@stores/filters.store";
-import type { Filter } from "../interfaces/filters.types";
-import type { SortDirection } from "../interfaces/shared.types";
 
 type SortingBoxItem = {
   id: string;

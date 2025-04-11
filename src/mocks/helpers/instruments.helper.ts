@@ -1,8 +1,8 @@
+import type { Filter } from "@interfaces/filters.types";
+import type { Instrument, InstrumentFilterOptions } from "@interfaces/instruments.types";
+import type { InstrumentApiResponse, SortDirection } from "@interfaces/shared.types";
 import type { SortBy } from "@stores/filters.store";
 import type { DefaultBodyType, StrictRequest } from "msw";
-import type { Filter } from "../../interfaces/filters.types";
-import type { Instrument, InstrumentFilterOptions } from "../../interfaces/instruments.types";
-import type { InstrumentApiResponse, SortDirection } from "../../interfaces/shared.types";
 
 export const selectByField = <FieldName extends keyof Instrument>(
   instruments: Instrument[],

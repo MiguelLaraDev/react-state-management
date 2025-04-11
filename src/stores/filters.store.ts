@@ -1,6 +1,6 @@
+import type { Filter } from "@interfaces/filters.types";
+import type { SortDirection } from "@interfaces/shared.types";
 import { create } from "zustand";
-import type { Filter } from "../interfaces/filters.types";
-import type { SortDirection } from "../interfaces/shared.types";
 
 export type SortBy = {
   field: Filter | "name";
