@@ -4,8 +4,8 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { useCartStore, type CartStoreItem } from "../../stores/cart.store";
-import { useLocalizationStore } from "../../stores/locale.store";
+import { useCartStore, type CartStoreItem } from "@stores/cart.store";
+import { useLocalizationStore } from "@stores/locale.store";
 import ButtonClose from "../ui-toolkit/ButtonClose";
 import CartPing from "./CartPing";
 

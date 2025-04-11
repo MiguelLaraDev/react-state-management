@@ -1,7 +1,7 @@
 import useInstrumentFetch from "@hooks/useInstrumentFetch";
 import useInstrumentPrefetch from "@hooks/useInstrumentPrefetch";
+import { useLocalizationStore } from "@stores/locale.store";
 import { useLocation, useParams } from "react-router-dom";
-import { useLocalizationStore } from "../stores/locale.store";
 
 const MainTitle = () => {
   const { pathname } = useLocation();

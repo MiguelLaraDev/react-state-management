@@ -2,9 +2,9 @@ import { useInfiniteQuery, type QueryFunctionContext } from "@tanstack/react-que
 import { useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 
+import { useUserSelectionStore } from "@stores/filters.store";
 import type { Instrument } from "../interfaces/instruments.types";
 import type { InstrumentApiResponse } from "../interfaces/shared.types";
-import { useUserSelectionStore } from "../stores/filters.store";
 
 const fetchItems = async (context: QueryFunctionContext): Promise<InstrumentApiResponse> => {
   const { pageParam, queryKey } = context;

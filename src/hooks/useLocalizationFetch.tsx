@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
-import { useLocalizationStore } from "../stores/locale.store";
+import { useLocalizationStore } from "@stores/locale.store";
 
 const fetchItems = async (): Promise<Record<string, string>> => {
   const response = await fetch("/api/locale");

@@ -8,8 +8,8 @@ import Score from ".@components/Score";
 import Button from ".@components/ui-toolkit/Button";
 import Selector from ".@components/ui-toolkit/Selector";
 import useInstrumentPrefetch from "@hooks/useInstrumentPrefetch";
+import { useCartStore, type CartStoreItem } from "@stores/cart.store";
 import { useState } from "react";
-import { useCartStore, type CartStoreItem } from "../stores/cart.store";
 
 interface QuantityItem {
   id: string;

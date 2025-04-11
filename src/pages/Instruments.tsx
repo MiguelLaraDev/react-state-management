@@ -6,8 +6,8 @@ import InstrumentLoading from ".@components/instruments/InstrumentLoading";
 import SortingBox from ".@components/SortingBox";
 import Button from ".@components/ui-toolkit/Button";
 import useInstrumentFetch from "@hooks/useInstrumentFetch";
+import { useUiStore } from "@stores/ui.store";
 import type { Instrument } from "../interfaces/instruments.types";
-import { useUiStore } from "../stores/ui.store";
 
 const List = memo<{ instruments: Instrument[] }>(({ instruments }) => {
   return (
