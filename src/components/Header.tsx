@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import logo from "@assets/logo.svg";
 import CartWidget from "./cart/CartWidget";
@@ -14,9 +15,9 @@ const Header = () => {
     >
       <div className="w-8" />
 
-      <div>
+      <Link to="/">
         <img src={logo} alt="Logo" className="h-8" />
-      </div>
+      </Link>
 
       <CartWidget />
     </header>
