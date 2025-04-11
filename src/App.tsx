@@ -1,42 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
-import Layout from "@components/Layout";
 import useLocalizationFetch from "@hooks/useLocalizationFetch";
-import Instruments from "@pages/Instruments";
+import { router } from "./routes/router";
 
 const App = () => {
   useLocalizationFetch();
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout />,
-      errorElement: <h1 className="text-red-500 text-3xl">Error page</h1>,
-      hydrateFallbackElement: <p className="text-green-500 text-3xl">Loading...</p>,
-      children: [
-        {
-          index: true,
-          element: <Instruments />,
-        },
-        {
-          path: "instruments",
-          children: [
-            {
-              index: true,
-              element: <Instruments />,
-            },
-            {
-              path: ":slug",
-              lazy: () =>
-                import("@pages/InstrumentDetail").then((module) => ({
-                  element: <module.default />,
-                })),
-            },
-          ],
-        },
-      ],
-    },
-  ]);
 
   return <RouterProvider router={router} />;
 };
