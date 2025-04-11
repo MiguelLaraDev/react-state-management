@@ -1,0 +1,28 @@
+Add tests.
+
+Improve error and loading pages:
+-   Replace: "...loading" by a placeholder.
+
+Add a footer.
+
+Add tab head title.
+
+<img> to <picture></picture>
+
+Improve breadscrumb.
+
+Image slider.
+
+Select quantity in the cart popup.
+
+Recycle list items.
+
+---
+
+## Suggestions for Improvement
+
+1. **Add visual hierarchy** to the technical achievements list (sub-bullets for related items)
+2. **Include project links** if available (GitHub, live demo)
+3. **Add installation/usage instructions** if sharing as a reference
+4. **Consider adding screenshots** to showcase the UI
+5. **Add a "Challenges" section** to discuss interesting problems solved
