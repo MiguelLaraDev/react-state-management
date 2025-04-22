@@ -37,31 +37,24 @@ const options = {
   },
 };
 
+let isMounted = false; // pseudo singleton!
+
 const ImageGallery = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current) {
+    if (!ref.current || isMounted) {
       return;
     }
 
     new MlaradevImageGallery(`#${ref.current.id}`, items, options);
+
+    isMounted = true;
   }, [ref]);
 
   return (
     <div className="w-full flex flex-col">
-      <div className="w-full flex flex-row items-center justify-center">
-        <img
-          src="/images/instrument_large_example.jpg"
-          className="w-full h-auto p-8 md:w-auto md:h-[40vh] image-rendering-smooth"
-        />
-      </div>
-
-      <div
-        id="gallery-container"
-        className="w-full h-20 bg-neutral-100 border-4 border-black"
-        ref={ref}
-      />
+      <div id="gallery-container" className="w-full h-fit" ref={ref} />
     </div>
   );
 };
