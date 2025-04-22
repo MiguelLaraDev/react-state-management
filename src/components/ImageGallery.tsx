@@ -45,7 +45,7 @@ const ImageGallery = () => {
       return;
     }
 
-    const gallery = new MlaradevImageGallery(ref.current.id, items, options);
+    new MlaradevImageGallery(`#${ref.current.id}`, items, options);
   }, [ref]);
 
   return (
@@ -56,13 +56,12 @@ const ImageGallery = () => {
           className="w-full h-auto p-8 md:w-auto md:h-[40vh] image-rendering-smooth"
         />
       </div>
+
       <div
         id="gallery-container"
-        className="w-full h-20 bg-neutral-100 text-xs text-neutral-400"
+        className="w-full h-20 bg-neutral-100 border-4 border-black"
         ref={ref}
-      >
-        TODO: Image slider here...
-      </div>
+      />
     </div>
   );
 };
