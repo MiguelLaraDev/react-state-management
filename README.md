@@ -58,3 +58,9 @@ This project aims to experiment with the latest state management techniques in R
 - **Styling:** Tailwind CSS
 - **Icons:** FontAwesome
 - **API Mocking:** MSW
+
+## Installation
+
+- Clone the repo.
+- `npm install`
+- `npm run dev`
