@@ -15,6 +15,7 @@ Exploring client and server state management in modern React applications.
 This project aims to experiment with the latest state management techniques in React. Using "Thomann" (an online music instruments store) as inspiration, I built a demo e-commerce application with core shopping features.
 
 ![Alt text](./docs/Capture%201.gif)
+
 ![Alt text](./docs/Capture%202.gif)
 
 ## Project Goals
