@@ -37,6 +37,10 @@ export const handlers = [
     const slug = String(params.slug);
     const result = getInstrumentBySlug(db as Instrument[], slug);
 
+    if (result?.length === 0) {
+      return HttpResponse.json({ error: "not found" }, { status: 404 });
+    }
+
     await delay(1500);
 
     return HttpResponse.json(result);

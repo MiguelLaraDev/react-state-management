@@ -1,8 +1,8 @@
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import { memo } from "react";
 
+import InstrumentsListLoading from "@/components/instruments/InstrumentsListLoading";
 import InstrumentItem from "@components/instruments/InstrumentItem";
-import InstrumentLoading from "@components/instruments/InstrumentLoading";
 import SortingBox from "@components/SortingBox";
 import useInstrumentFetch from "@hooks/useInstrumentFetch";
 import type { Instrument } from "@interfaces/instruments.types";
@@ -27,7 +27,7 @@ const Instruments = () => {
     <div className="w-full h-fit flex flex-col gap-4">
       {status === "error" && <div>Error: {error?.message}</div>}
 
-      {status === "pending" && <InstrumentLoading />}
+      {status === "pending" && <InstrumentsListLoading />}
 
       {status === "success" && (
         <>

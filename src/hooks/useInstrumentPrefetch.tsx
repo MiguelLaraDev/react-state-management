@@ -6,18 +6,14 @@ import type { Instrument } from "@interfaces/instruments.types";
 const fetchInstrumentById = async (slug: string) => {
   const response = await fetch(`/api/instruments/${slug}`);
 
-  if (!response.ok) throw new Error("Network response was not ok");
-
   return response.json();
 };
 
 const useInstrumentPrefetch = (injectedSlug?: string) => {
   const queryClient = useQueryClient();
-  const [data, setData] = useState<Instrument[] | null>(null);
+  const [data, setData] = useState<Instrument[] | null | "error">(null);
 
   const prefetchInstrument = async (slug: string) => {
-    console.log("prefetch");
-
     await queryClient.prefetchQuery({
       queryKey: ["instrument", slug],
       queryFn: () => fetchInstrumentById(slug),
@@ -38,6 +34,11 @@ const useInstrumentPrefetch = (injectedSlug?: string) => {
       queryFn: () => fetchInstrumentById(slug),
       staleTime: 5000,
     });
+
+    if (result.error) {
+      setData("error");
+      return;
+    }
 
     setData(result?.[0] ? result : null);
   };

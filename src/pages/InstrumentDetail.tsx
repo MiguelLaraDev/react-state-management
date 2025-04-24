@@ -3,6 +3,7 @@ import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import { Link, useParams } from "react-router-dom";
 
+import InstrumentDetailLoading from "@/components/instruments/InstrumentDetailLoading";
 import ImageGallery from "@components/ImageGallery";
 import AvailabilityBadge from "@components/instruments/AvailabilityBadge";
 import Score from "@components/Score";
@@ -31,12 +32,12 @@ const InstrumentDetail = () => {
   const { data } = useInstrumentPrefetch(slug);
   const [quantity, setQuantity] = useState<string>(quantityItems[0].id);
 
-  if (!data) {
-    return <div className="text-green-700 text-2xl">...loading</div>;
+  if (data === "error") {
+    return <div className="text-red-700 text-2xl">Ups, no instrument found...</div>;
   }
 
-  if (data?.length === 0) {
-    return <div className="text-red-700 text-2xl">Ups, no instrument found...</div>;
+  if (!data) {
+    return <InstrumentDetailLoading />;
   }
 
   const { id, name, image, price, availability, long_description, reviewers } = data[0];
