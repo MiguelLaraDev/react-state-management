@@ -11,8 +11,6 @@ Add tab head title.
 
 Improve breadscrumb.
 
-Image slider.
-
 Select quantity in the cart popup.
 
 Recycle list items.

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import { Link, useParams } from "react-router-dom";
 
+import InstrumentDetailLoading from "@/components/instruments/InstrumentDetailLoading";
 import ImageGallery from "@components/ImageGallery";
 import AvailabilityBadge from "@components/instruments/AvailabilityBadge";
 import Score from "@components/Score";
@@ -32,7 +33,7 @@ const InstrumentDetail = () => {
   const [quantity, setQuantity] = useState<string>(quantityItems[0].id);
 
   if (!data) {
-    return <div className="text-green-700 text-2xl">...loading</div>;
+    return <InstrumentDetailLoading />;
   }
 
   if (data?.length === 0) {

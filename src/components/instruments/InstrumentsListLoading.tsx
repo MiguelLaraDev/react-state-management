@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-const InstrumentLoading = () => {
+const InstrumentsListLoading = () => {
   return (
     <>
       <span className="h-8" />
@@ -21,4 +21,4 @@ const InstrumentLoading = () => {
   );
 };
 
-export default InstrumentLoading;
+export default InstrumentsListLoading;

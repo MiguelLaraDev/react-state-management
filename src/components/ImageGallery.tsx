@@ -26,14 +26,14 @@ const items = [
 
 const options = {
   thumbs: {
-    borderColor: "red",
+    borderColor: "lightgrey",
     borderWidth: "2px",
     width: 80,
     height: 80,
     useBorder: true,
   },
   slider: {
-    mainColor: "red",
+    mainColor: "lightgrey",
   },
 };
 
