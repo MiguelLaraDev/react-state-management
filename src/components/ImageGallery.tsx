@@ -37,24 +37,20 @@ const options = {
   },
 };
 
-let isMounted = false; // pseudo singleton!
-
 const ImageGallery = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current || isMounted) {
+    if (!ref.current) {
       return;
     }
 
     new MlaradevImageGallery(`#${ref.current.id}`, items, options);
-
-    isMounted = true;
   }, [ref]);
 
   return (
     <div className="w-full flex flex-col">
-      <div id="gallery-container" className="w-full h-fit" ref={ref} />
+      <div id="gallery-container" className="w-full h-fit z-0" ref={ref} />
     </div>
   );
 };

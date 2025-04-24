@@ -1,8 +1,5 @@
 Add tests.
 
-Improve error and loading pages:
--   Replace: "...loading" by a placeholder.
-
 Add a footer.
 
 Add tab head title.

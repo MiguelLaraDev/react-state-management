@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header
       className={classNames(
-        "fixed w-full h-12 py-2 px-4 z-0 bg-white shadow",
+        "fixed w-full h-12 py-2 px-4 z-1 bg-white shadow",
         "flex flex-row items-center justify-between",
         "md:z-50 md:px-6",
       )}
