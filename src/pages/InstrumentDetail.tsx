@@ -32,12 +32,12 @@ const InstrumentDetail = () => {
   const { data } = useInstrumentPrefetch(slug);
   const [quantity, setQuantity] = useState<string>(quantityItems[0].id);
 
-  if (!data) {
-    return <InstrumentDetailLoading />;
+  if (data === "error") {
+    return <div className="text-red-700 text-2xl">Ups, no instrument found...</div>;
   }
 
-  if (data?.length === 0) {
-    return <div className="text-red-700 text-2xl">Ups, no instrument found...</div>;
+  if (!data) {
+    return <InstrumentDetailLoading />;
   }
 
   const { id, name, image, price, availability, long_description, reviewers } = data[0];
