@@ -44,7 +44,7 @@ This project aims to experiment with the latest state management techniques in R
 ### Infrastructure
 
 - Built from scratch without frameworks (Vite + React SPA)
-- Developed a mock backend API using MSW
+- Mock backend API using MSW
 
 ![Alt text](./docs/Capture%201.gif)
 
